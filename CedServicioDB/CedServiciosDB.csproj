@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.0-preview3.19551.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CedServiciosEntidades\CedServiciosEntidades.csproj" />
+    <ProjectReference Include="..\CedServiciosEX\CedServiciosEX.csproj" />
+    <ProjectReference Include="..\FeaEntidades\FeaEntidades.csproj" />
+  </ItemGroup>
+
+</Project>
