@@ -1,34 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
-using CedFCIC;
+using CedServicios;
 
-namespace CedFCIC.RN
+namespace CedServicios.RN
 {
     public class Cuit
     {
         public static List<Entidades.Cuit> LeerListaCuitsPorUsuario(Entidades.Sesion Sesion)
         {
-            CedFCIC.DB.Cuit db = new DB.Cuit(Sesion);
+            CedServicios.DB.Cuit db = new DB.Cuit(Sesion);
             return db.LeerListaCuitsPorUsuario();
         }
         public static void Leer(Entidades.Cuit Cuit, Entidades.Sesion Sesion)
         {
-            CedFCIC.DB.Cuit db = new DB.Cuit(Sesion);
+            CedServicios.DB.Cuit db = new DB.Cuit(Sesion);
             db.Leer(Cuit);
         }
         public static void CompletarUNsYPuntosVta(List<Entidades.Cuit> Cuits, Entidades.Sesion Sesion)
         {
-            CedFCIC.DB.Cuit db = new DB.Cuit(Sesion);
+            CedServicios.DB.Cuit db = new DB.Cuit(Sesion);
             db.CompletarUNsYPuntosVta(Cuits);
         }
         public static void Crear(Entidades.Cuit Cuit, List<string> Servicios, Entidades.Sesion Sesion)
         {
             //Validar
-            if (Servicios.Count == 0) throw new CedFCIC.EX.Cuit.NingunServicioSeleccionado();
+            if (Servicios.Count == 0) throw new CedServicios.EX.Cuit.NingunServicioSeleccionado();
             string servicio = Servicios.Find(delegate(string s) {return s == "eFact";});
             if (servicio != null && !Cuit.DestinoComprobanteAFIP && !Cuit.DestinoComprobanteITF)
             {
-                throw new CedFCIC.EX.Cuit.NingunDestinoComprobanteSeleccionado();
+                throw new CedServicios.EX.Cuit.NingunDestinoComprobanteSeleccionado();
             }
             //Crear
             string permisoAdminCUITParaUsuarioAprobadoHandler = RN.Permiso.PermisoAdminCUITParaUsuarioAprobadoHandler(Cuit, Sesion);

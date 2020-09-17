@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 
-namespace CedFCIC.Entidades
+namespace CedServicios.Entidades
 {
     public class Medio
     {

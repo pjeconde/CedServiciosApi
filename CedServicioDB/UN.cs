@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 
-namespace CedFCIC.DB
+namespace CedServicios.DB
 {
     public class UN : db
     {
@@ -61,7 +61,7 @@ namespace CedFCIC.DB
             DataTable dt = (DataTable)Ejecutar(a.ToString(), TipoRetorno.TB, Transaccion.NoAcepta, sesion.CnnStr);
             if (dt.Rows.Count == 0)
             {
-                throw new CedFCIC.EX.Validaciones.ElementoInexistente("Unidad de negocio '" + UN.Id + "' del Cuit " + UN.Cuit);
+                throw new CedServicios.EX.Validaciones.ElementoInexistente("Unidad de negocio '" + UN.Id + "' del Cuit " + UN.Cuit);
             }
             else
             {

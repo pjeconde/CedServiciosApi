@@ -5,7 +5,7 @@ using System.Text;
 using System.Net.Mail;
 using System.Net;
 
-namespace CedFCIC.RN
+namespace CedServicios.RN
 {
     public class EnvioCorreo
     {
@@ -274,7 +274,7 @@ namespace CedFCIC.RN
             smtpClient.Credentials = new NetworkCredential("registrousuarios@cedeira.com.ar", "cedeira123");
             smtpClient.Send(mail);
         }
-        //public static void AvisoGeneracionComprobante(Entidades.Persona Persona, Entidades.Comprobante Contrato, Entidades.Comprobante Comprobante, CedFCIC.InterFacturas.lote_comprobantes Lote, string ArchivoPDF, string LogoPath, Entidades.Sesion Sesion)
+        //public static void AvisoGeneracionComprobante(Entidades.Persona Persona, Entidades.Comprobante Contrato, Entidades.Comprobante Comprobante, CedServicios.InterFacturas.lote_comprobantes Lote, string ArchivoPDF, string LogoPath, Entidades.Sesion Sesion)
         //{
         //    SmtpClient smtpClient = new SmtpClient("mail.cedeira.com.ar");
         //    MailMessage mail = new MailMessage();
@@ -325,7 +325,7 @@ namespace CedFCIC.RN
         //    smtpClient.Credentials = new NetworkCredential("registrousuarios@cedeira.com.ar", "cedeira123");
         //    smtpClient.Send(mail);
         //}
-        //private static string TratamientoPalabrasReservadas(string Cuerpo, Entidades.Comprobante Comprobante, CedFCIC.InterFacturas.lote_comprobantes Lote, string LogoPath, bool Negritas)
+        //private static string TratamientoPalabrasReservadas(string Cuerpo, Entidades.Comprobante Comprobante, CedServicios.InterFacturas.lote_comprobantes Lote, string LogoPath, bool Negritas)
         //{
         //    string negritasDsd = "<b>";
         //    string negritasHst = "</b>";

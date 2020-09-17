@@ -7,7 +7,7 @@ using System.IO;
 //using Ionic.Zip;
 //using System.Diagnostics;
 
-namespace CedFCIC.RN
+namespace CedServicios.RN
 {
     public class Comprobante
     {
@@ -2411,7 +2411,7 @@ namespace CedFCIC.RN
             String constructedString = e.GetString(characters);
             return (constructedString);
         }
-        public static void Actualizar(CedFCIC.Entidades.Comprobante Comprobante, Entidades.Sesion sesion)
+        public static void Actualizar(CedServicios.Entidades.Comprobante Comprobante, Entidades.Sesion sesion)
         {
             DB.Comprobante db = new DB.Comprobante(sesion);
             db.Actualizar(Comprobante);

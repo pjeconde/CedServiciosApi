@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 
-namespace CedFCIC.DB
+namespace CedServicios.DB
 {
     public class Rubro : db
     {
@@ -25,7 +25,7 @@ namespace CedFCIC.DB
             }
             else
             {
-                throw new CedFCIC.EX.Validaciones.ElementoInexistente("Esquema contable para " + EsquemaContable.TipoComprobante.Descr + ", de " + EsquemaContable.NaturalezaComprobante.Id + " (concepto: " + EsquemaContable.Concepto + "), ");
+                throw new CedServicios.EX.Validaciones.ElementoInexistente("Esquema contable para " + EsquemaContable.TipoComprobante.Descr + ", de " + EsquemaContable.NaturalezaComprobante.Id + " (concepto: " + EsquemaContable.Concepto + "), ");
             }
         }
     }

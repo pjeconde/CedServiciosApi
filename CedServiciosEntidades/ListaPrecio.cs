@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace CedFCIC.Entidades
+namespace CedServicios.Entidades
 {
     [Serializable]
     public class ListaPrecio

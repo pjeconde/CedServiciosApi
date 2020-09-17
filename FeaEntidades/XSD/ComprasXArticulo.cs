@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CedFCIC.Entidades
+namespace CedServicios.Entidades
 {
     
     public class ComprasXArticulo
@@ -12,7 +12,7 @@ namespace CedFCIC.Entidades
         string periodoDsd;
         string periodoHst;
 
-        List<CedFCIC.Entidades.ComprasXArticuloDetalle> comprasXArticuloDetalle;
+        List<CedServicios.Entidades.ComprasXArticuloDetalle> comprasXArticuloDetalle;
 
         public ComprasXArticulo()
         {
@@ -62,7 +62,7 @@ namespace CedFCIC.Entidades
             }
         }
         [System.Xml.Serialization.XmlElementAttribute("ComprasXArticuloDetalle")]
-        public List<CedFCIC.Entidades.ComprasXArticuloDetalle> ComprasXArticuloDetalle
+        public List<CedServicios.Entidades.ComprasXArticuloDetalle> ComprasXArticuloDetalle
         {
             set
             {

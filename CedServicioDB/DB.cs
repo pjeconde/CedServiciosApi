@@ -6,11 +6,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.Globalization;
 
-namespace CedFCIC.DB
+namespace CedServicios.DB
 {
     public class db : IDisposable
     {
-        protected Entidades.Sesion sesion = new CedFCIC.Entidades.Sesion();
+        protected Entidades.Sesion sesion = new CedServicios.Entidades.Sesion();
         protected CultureInfo cedeiraCultura;
         private string[] sqls;
         private SqlConnection sqlConexion;
@@ -24,7 +24,7 @@ namespace CedFCIC.DB
         private DataView[] dv;
         private DataTable[] tb;
 
-        public db(CedFCIC.Entidades.Sesion Sesion)
+        public db(CedServicios.Entidades.Sesion Sesion)
         {
             // Constructor
             this.sesion = Sesion;
@@ -241,7 +241,7 @@ namespace CedFCIC.DB
             {
                 if (((System.Data.SqlClient.SqlException)(ex1)).Procedure == "ConnectionOpen (Connect()).")
                 {
-                    throw new CedFCIC.EX.db.Conexion(ex1);
+                    throw new CedServicios.EX.db.Conexion(ex1);
                 }
                 else
                 {
@@ -250,20 +250,20 @@ namespace CedFCIC.DB
                         try
                         {
                             sqlTransaccion.Rollback();
-                            throw new CedFCIC.EX.db.EjecucionConRollback(ex1);
+                            throw new CedServicios.EX.db.EjecucionConRollback(ex1);
                         }
-                        catch (CedFCIC.EX.db.EjecucionConRollback)
+                        catch (CedServicios.EX.db.EjecucionConRollback)
                         {
-                            throw new CedFCIC.EX.db.EjecucionConRollback(ex1);
+                            throw new CedServicios.EX.db.EjecucionConRollback(ex1);
                         }
                         catch
                         {
-                            throw new CedFCIC.EX.db.Rollback(ex1);
+                            throw new CedServicios.EX.db.Rollback(ex1);
                         }
                     }
                     else
                     {
-                        throw new CedFCIC.EX.db.Ejecucion(ex1);
+                        throw new CedServicios.EX.db.Ejecucion(ex1);
                     }
                 }
             }
@@ -278,7 +278,7 @@ namespace CedFCIC.DB
             }
             catch (System.Data.SqlClient.SqlException ex)
             {
-                throw new CedFCIC.EX.db.Conexion(ex);
+                throw new CedServicios.EX.db.Conexion(ex);
             }
         }
         #endregion
@@ -380,7 +380,7 @@ namespace CedFCIC.DB
             }
             catch (System.Data.SqlClient.SqlException ex)
             {
-                throw new CedFCIC.EX.db.Conexion(ex);
+                throw new CedServicios.EX.db.Conexion(ex);
             }
         }
         public string ReemplazarApostrofos(string cadena)

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CedFCIC.Entidades
+namespace CedServicios.Entidades
 {
 
     public class StockXArticulo
@@ -12,7 +12,7 @@ namespace CedFCIC.Entidades
         string periodoDsd;
         string periodoHst;
 
-        List<CedFCIC.Entidades.StockXArticuloDetalle> stockXArticuloXArticuloDetalle;
+        List<CedServicios.Entidades.StockXArticuloDetalle> stockXArticuloXArticuloDetalle;
 
         public StockXArticulo()
         {
@@ -62,7 +62,7 @@ namespace CedFCIC.Entidades
             }
         }
         [System.Xml.Serialization.XmlElementAttribute("StockXArticuloDetalle")]
-        public List<CedFCIC.Entidades.StockXArticuloDetalle> StockXArticuloDetalle
+        public List<CedServicios.Entidades.StockXArticuloDetalle> StockXArticuloDetalle
         {
             set
             {

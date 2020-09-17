@@ -3,7 +3,7 @@ using System.Data;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CedFCIC.DB
+namespace CedServicios.DB
 {
     public class PuntoVta : db
     {

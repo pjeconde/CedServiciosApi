@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using CedFCIC;
+using CedServicios;
 
-namespace CedFCIC.RN
+namespace CedServicios.RN
 {
     public class Permiso
     {
         public static void Leer(Entidades.Permiso Permiso, Entidades.Sesion Sesion)
         {
-            CedFCIC.DB.Permiso db = new DB.Permiso(Sesion);
+            CedServicios.DB.Permiso db = new DB.Permiso(Sesion);
             db.Leer(Permiso);
         }
         public static List<Entidades.Permiso> LeerListaPermisosPorUsuario(Entidades.Usuario Usuario, Entidades.Sesion Sesion)
         {
-            CedFCIC.DB.Permiso db = new DB.Permiso(Sesion);
+            CedServicios.DB.Permiso db = new DB.Permiso(Sesion);
             List<Entidades.Permiso> lista = db.LeerListaPermisosPorUsuario(Usuario);
             for (int i = 0; i < lista.Count; i++)
             {
@@ -27,17 +27,17 @@ namespace CedFCIC.RN
         }
         public static List<Entidades.Permiso> LeerListaPermisosPteAutoriz(Entidades.Usuario Usuario, Entidades.Sesion Sesion)
         {
-            CedFCIC.DB.Permiso db = new DB.Permiso(Sesion);
+            CedServicios.DB.Permiso db = new DB.Permiso(Sesion);
             return db.LeerListaPermisosPteAutoriz(Usuario);
         }
         public static List<Entidades.Permiso> LeerListaPermisosFiltrados(string IdUsuario, string CUIT, string IdTipoPermiso, string Estado, Entidades.Sesion Sesion, string VerPermisosDe)
         {
-            CedFCIC.DB.Permiso db = new DB.Permiso(Sesion);
+            CedServicios.DB.Permiso db = new DB.Permiso(Sesion);
             return db.LeerListaPermisosFiltrados(IdUsuario, CUIT, IdTipoPermiso, Estado, VerPermisosDe);
         }
         public static Entidades.Permiso LeerPermisoPorCuit(string CUIT, string IdTipoPermiso, Entidades.Sesion Sesion)
         {
-            CedFCIC.DB.Permiso db = new DB.Permiso(Sesion);
+            CedServicios.DB.Permiso db = new DB.Permiso(Sesion);
             return db.LeerPermisoPorCuit(CUIT, IdTipoPermiso);
         }
         public static void SolicitarPermisoParaUsuario(Entidades.Cuit Cuit, out string ReferenciaAAprobadores, Entidades.Sesion Sesion)
@@ -59,7 +59,7 @@ namespace CedFCIC.RN
             permiso.UsuarioSolicitante = Sesion.Usuario;
             permiso.Accion.Tipo = "SolicAdminCuit";
             permiso.WF.Estado = "PteAutoriz";
-            CedFCIC.DB.Permiso db = new DB.Permiso(Sesion);
+            CedServicios.DB.Permiso db = new DB.Permiso(Sesion);
             db.Alta(permiso);
             List<Entidades.Usuario> usuariosAutorizadores = db.LeerListaUsuariosAutorizadores(permiso.Cuit);
             ReferenciaAAprobadores = String.Empty;
@@ -89,7 +89,7 @@ namespace CedFCIC.RN
             permiso.UsuarioSolicitante = Sesion.Usuario;
             permiso.Accion.Tipo = "SolicAdminUN";
             permiso.WF.Estado = "PteAutoriz";
-            CedFCIC.DB.Permiso db = new DB.Permiso(Sesion);
+            CedServicios.DB.Permiso db = new DB.Permiso(Sesion);
             db.Alta(permiso);
             List<Entidades.Usuario> usuariosAutorizadores = db.LeerListaUsuariosAutorizadores(permiso.Cuit, permiso.UN.Id);
             ReferenciaAAprobadores = String.Empty;
@@ -118,7 +118,7 @@ namespace CedFCIC.RN
             permiso.FechaFinVigencia = new DateTime(2062, 12, 31);
             permiso.UsuarioSolicitante = Sesion.Usuario;
             permiso.WF.Estado = "Vigente";
-            CedFCIC.DB.Permiso db = new DB.Permiso(Sesion);
+            CedServicios.DB.Permiso db = new DB.Permiso(Sesion);
             return db.AltaHandler(permiso, false, false, true);
         }
         public static void SolicitarPermisoParaUsuario(Entidades.Cuit Cuit, Entidades.UN UN, Entidades.TipoPermiso TipoPermiso, DateTime FechaFinVigencia, out string ReferenciaAAprobadores, Entidades.Sesion Sesion)
@@ -147,13 +147,13 @@ namespace CedFCIC.RN
             if (esAdminUNdelaUN.Count != 0)
             {
                 permiso.WF.Estado = "Vigente";
-                CedFCIC.DB.Permiso db = new DB.Permiso(Sesion);
+                CedServicios.DB.Permiso db = new DB.Permiso(Sesion);
                 db.Alta(permiso);
             }
             else
             {
                 permiso.WF.Estado = "PteAutoriz";
-                CedFCIC.DB.Permiso db = new DB.Permiso(Sesion);
+                CedServicios.DB.Permiso db = new DB.Permiso(Sesion);
                 db.Alta(permiso);
                 List<Entidades.Usuario> usuariosAutorizadores = db.LeerListaUsuariosAutorizadores(permiso.Cuit);
                 for (int i = 0; i < usuariosAutorizadores.Count; i++)
@@ -166,7 +166,7 @@ namespace CedFCIC.RN
         }
         public static string PermisoUsoCUITxUNHandler(Entidades.UN UN, out List<Entidades.Usuario> UsuariosAutorizadores, out string ReferenciaAAprobadores, out string EstadoPermisoUsoCUITxUN, Entidades.Sesion Sesion)
         {
-            CedFCIC.DB.Permiso db = new DB.Permiso(Sesion);
+            CedServicios.DB.Permiso db = new DB.Permiso(Sesion);
             Entidades.Permiso permiso = new Entidades.Permiso();
             permiso.Cuit = UN.Cuit;
             permiso.UN = UN;
@@ -246,7 +246,7 @@ namespace CedFCIC.RN
             permiso.FechaFinVigencia = new DateTime(2062, 12, 31);
             permiso.UsuarioSolicitante = Usuario;
             permiso.WF.Estado = "Vigente";
-            CedFCIC.DB.Permiso db = new DB.Permiso(Sesion);
+            CedServicios.DB.Permiso db = new DB.Permiso(Sesion);
             db.Alta(permiso);
         }
         public static string PermisoAdminCUITParaUsuarioAprobadoHandler(Entidades.Cuit Cuit, Entidades.Sesion Sesion)
@@ -259,12 +259,12 @@ namespace CedFCIC.RN
             permiso.FechaFinVigencia = new DateTime(2062, 12, 31);
             permiso.UsuarioSolicitante = Sesion.Usuario;
             permiso.WF.Estado = "Vigente";
-            CedFCIC.DB.Permiso db = new DB.Permiso(Sesion);
+            CedServicios.DB.Permiso db = new DB.Permiso(Sesion);
             return db.AltaHandler(permiso, false, false, false);
         }
         public static string PermisoUsoCUITxUNAprobadoHandler(Entidades.UN UN, Entidades.Sesion Sesion)
         {
-            CedFCIC.DB.Permiso db = new DB.Permiso(Sesion);
+            CedServicios.DB.Permiso db = new DB.Permiso(Sesion);
             Entidades.Permiso permiso = new Entidades.Permiso();
             permiso.Cuit = UN.Cuit;
             permiso.UN = UN;
@@ -284,7 +284,7 @@ namespace CedFCIC.RN
             permiso.FechaFinVigencia = FechaFinVigencia;
             permiso.UsuarioSolicitante = Sesion.Usuario;
             permiso.WF.Estado = "Vigente";
-            CedFCIC.DB.Permiso db = new DB.Permiso(Sesion);
+            CedServicios.DB.Permiso db = new DB.Permiso(Sesion);
             return db.AltaHandler(permiso, false, false, true);
         }
         public static string ServxCUITAprobadoHandler(Entidades.Cuit Cuit, Entidades.TipoPermiso TipoPermiso, DateTime FechaFinVigencia, Entidades.Sesion Sesion)
@@ -297,7 +297,7 @@ namespace CedFCIC.RN
             permiso.FechaFinVigencia = FechaFinVigencia;
             permiso.UsuarioSolicitante = Sesion.Usuario;
             permiso.WF.Estado = "Vigente";
-            CedFCIC.DB.Permiso db = new DB.Permiso(Sesion);
+            CedServicios.DB.Permiso db = new DB.Permiso(Sesion);
             return db.AltaHandler(permiso, false, false, false);
         }
 

@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using CedFCIC;
+using CedServicios;
 
-namespace CedFCIC.RN
+namespace CedServicios.RN
 {
     public class TipoListaPrecio
     {
         public static List<Entidades.TipoListaPrecio> Lista()
         {
-            List<CedFCIC.Entidades.TipoListaPrecio> listaTipoListaPrecio = new List<CedFCIC.Entidades.TipoListaPrecio>();
-            CedFCIC.Entidades.TipoListaPrecio tipoListaPrecio = new CedFCIC.Entidades.TipoListaPrecio();
+            List<CedServicios.Entidades.TipoListaPrecio> listaTipoListaPrecio = new List<CedServicios.Entidades.TipoListaPrecio>();
+            CedServicios.Entidades.TipoListaPrecio tipoListaPrecio = new CedServicios.Entidades.TipoListaPrecio();
             tipoListaPrecio.Id = "Compra"; tipoListaPrecio.Descr = "Compra"; listaTipoListaPrecio.Add(tipoListaPrecio);
-            tipoListaPrecio = new CedFCIC.Entidades.TipoListaPrecio();
+            tipoListaPrecio = new CedServicios.Entidades.TipoListaPrecio();
             tipoListaPrecio.Id = "Venta"; tipoListaPrecio.Descr = "Venta"; listaTipoListaPrecio.Add(tipoListaPrecio);
             return listaTipoListaPrecio;
         }

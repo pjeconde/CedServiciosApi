@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using System.Collections.Generic;
 
-namespace CedFCIC.EX
+namespace CedServicios.EX
 {
     [Serializable]
     public class BaseApplicationException : Exception
@@ -28,7 +28,7 @@ namespace CedFCIC.EX
         
        
         [Serializable]
-        public class PasswordYConfirmacionNoCoincidente : CedFCIC.EX.BaseApplicationException
+        public class PasswordYConfirmacionNoCoincidente : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "La Contraseña no coincide con su Confirmación";
             public PasswordYConfirmacionNoCoincidente()
@@ -45,7 +45,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class PasswordNuevaIgualAActual : CedFCIC.EX.BaseApplicationException
+        public class PasswordNuevaIgualAActual : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "La Contraseña nueva no debe ser igual a la actual";
             public PasswordNuevaIgualAActual()
@@ -62,7 +62,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class IdUsuarioNoDisponible : CedFCIC.EX.BaseApplicationException
+        public class IdUsuarioNoDisponible : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "El IdUsuario, que ingresó, ya ha sido usado por otra persona.  Modifiquelo hasta encontrar un valor único.";
             public IdUsuarioNoDisponible()
@@ -79,7 +79,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class ParametrosAccionCompradorErroneo : CedFCIC.EX.BaseApplicationException
+        public class ParametrosAccionCompradorErroneo : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "Acción inválida sobre Comprador.  Por favor, póngase en contacto con Cedeira Software Factory, para solucionar el inconveniente.  Muchas gracias.";
             public ParametrosAccionCompradorErroneo()
@@ -96,7 +96,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class ErrorDeConfirmacion : CedFCIC.EX.BaseApplicationException
+        public class ErrorDeConfirmacion : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "El evento de confirmación (de creación de la cuenta eFact) no puede ejecutarse.  Es probable que la confirmación ya haya sido registrada.  Verifique si puede identificarse.  En paso contrario, póngase en contacto con Cedeira Software Factory, para solucionar el inconveniente.  Muchas gracias.";
             public ErrorDeConfirmacion()
@@ -113,7 +113,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class LoginRechazadoXEstadoCuenta : CedFCIC.EX.BaseApplicationException
+        public class LoginRechazadoXEstadoCuenta : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "Login inválido (la cuenta está pendiente de confirmación o dada de baja)";
             public LoginRechazadoXEstadoCuenta()
@@ -130,7 +130,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class LoginRechazadoXPasswordInvalida : CedFCIC.EX.BaseApplicationException
+        public class LoginRechazadoXPasswordInvalida : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "Contraseña inválida";
             public LoginRechazadoXPasswordInvalida()
@@ -147,7 +147,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class NoHayUsuariosAsociadasAEmail : CedFCIC.EX.BaseApplicationException
+        public class NoHayUsuariosAsociadasAEmail : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "No hay cuentas asociadas a la dirección de correo electrónico especificada";
             public NoHayUsuariosAsociadasAEmail()
@@ -164,7 +164,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class UsuarioConfFormatoMsgErroneo : CedFCIC.EX.BaseApplicationException
+        public class UsuarioConfFormatoMsgErroneo : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "El mensaje de confirmación (de creación de la cuenta eFact) tiene un formato erróneo.  Por favor, póngase en contacto con Cedeira Software Factory, para solucionar el inconveniente.  Muchas gracias.";
             public UsuarioConfFormatoMsgErroneo()
@@ -181,7 +181,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class PasswordNoMatch : CedFCIC.EX.BaseApplicationException
+        public class PasswordNoMatch : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "Contraseña incorrecta";
             public PasswordNoMatch()
@@ -202,7 +202,7 @@ namespace CedFCIC.EX
     {
        
         [Serializable]
-        public class OpInexistente : CedFCIC.EX.BaseApplicationException
+        public class OpInexistente : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "Operacion inexistente (WF)";
             public OpInexistente() : base(TextoError)
@@ -216,7 +216,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class EventoInvalido : CedFCIC.EX.BaseApplicationException
+        public class EventoInvalido : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "Evento invalido (WF)";
             public EventoInvalido()
@@ -233,7 +233,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class EstadoHstInvalido : CedFCIC.EX.BaseApplicationException
+        public class EstadoHstInvalido : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "Seleccion inválida de EstadoHst (WF)";
             public EstadoHstInvalido()
@@ -250,7 +250,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class EstadoHstNoDefinido : CedFCIC.EX.BaseApplicationException
+        public class EstadoHstNoDefinido : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "EstadoHst no definido (WF)";
             public EstadoHstNoDefinido()
@@ -267,7 +267,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class FlowInvalido : CedFCIC.EX.BaseApplicationException
+        public class FlowInvalido : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "Flow invalido (WF)";
             public FlowInvalido() : base(TextoError)
@@ -281,7 +281,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class CircuitoInvalido : CedFCIC.EX.BaseApplicationException
+        public class CircuitoInvalido : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "Circuito invalido (WF)";
             public CircuitoInvalido() : base(TextoError)
@@ -295,7 +295,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class NivSegInvalido : CedFCIC.EX.BaseApplicationException
+        public class NivSegInvalido : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "Nivel de seguridad invalido (WF)";
             public NivSegInvalido() : base(TextoError)
@@ -309,7 +309,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class EventoSinSeg : CedFCIC.EX.BaseApplicationException
+        public class EventoSinSeg : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "Evento sin esquema de seguridad asociado (WF)";
             public EventoSinSeg() : base(TextoError)
@@ -323,7 +323,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class UsuarioNoCumpleSeg : CedFCIC.EX.BaseApplicationException
+        public class UsuarioNoCumpleSeg : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "Usuario no cumple con el esquema de seguridad del evento (WF)";
             public UsuarioNoCumpleSeg() : base(TextoError)
@@ -337,7 +337,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class EventoIniMalConfigurado : CedFCIC.EX.BaseApplicationException
+        public class EventoIniMalConfigurado : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "El esquema de seguridad del evento inicial esta configurado de manera incorrecta.  Los eventos iniciales no deben requerir mas de una intervencion (WF)";
             public EventoIniMalConfigurado() : base(TextoError)
@@ -351,7 +351,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class EstadoVirtualMalConfigurado : CedFCIC.EX.BaseApplicationException
+        public class EstadoVirtualMalConfigurado : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "No es posible encontrar el valor del estado (virtual) de destino, definido en el evento (WF)";
             public EstadoVirtualMalConfigurado() : base(TextoError)
@@ -365,7 +365,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class CXO : CedFCIC.EX.BaseApplicationException
+        public class CXO : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "Usuario no cumple con el esquema de control por oposicion (WF)";
             public CXO() : base(TextoError)
@@ -379,7 +379,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class FechaProcesoNoMatch : CedFCIC.EX.BaseApplicationException
+        public class FechaProcesoNoMatch : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "La fecha de proceso no coincide con la fecha de la base de datos";
             public FechaProcesoNoMatch() : base(TextoError)
@@ -393,7 +393,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class FechaNoMatch : CedFCIC.EX.BaseApplicationException
+        public class FechaNoMatch : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "La fecha no coincide con la fecha de proceso";
             public FechaNoMatch() : base(TextoError)
@@ -483,7 +483,7 @@ namespace CedFCIC.EX
     namespace Validaciones
     {
         [Serializable]
-        public class PrecioNoEncontrado : CedFCIC.EX.BaseApplicationException
+        public class PrecioNoEncontrado : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "Precio no encontrado";
             public PrecioNoEncontrado(string DescrEspecie, DateTime Fecha) : base(TextoError + ".  Especie: '" + DescrEspecie + "', Dia: " + Fecha.ToString("dd/MM/yyyy"))
@@ -497,7 +497,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class PrecioNoEncontradoEnExcel : CedFCIC.EX.BaseApplicationException
+        public class PrecioNoEncontradoEnExcel : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "Precio no encontrado en planilla Excel: ";
             public PrecioNoEncontradoEnExcel(string DescrEspecie) : base(TextoError + DescrEspecie)
@@ -511,7 +511,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class ConexionInactiva : CedFCIC.EX.BaseApplicationException
+        public class ConexionInactiva : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "Conexión inactiva con ";
             public ConexionInactiva(string Sistema) : base(TextoError + Sistema)
@@ -525,7 +525,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class ElementoInexistente : CedFCIC.EX.BaseApplicationException
+        public class ElementoInexistente : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "inexistente";
             public ElementoInexistente(string Descripcion) : base(Descripcion + " " + TextoError)
@@ -539,7 +539,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class ElementoNoEncontrado : CedFCIC.EX.BaseApplicationException
+        public class ElementoNoEncontrado : CedServicios.EX.BaseApplicationException
         {
             private static string TextoError = "no encontrado";
             public ElementoNoEncontrado(string descrProp) : base(descrProp + " " + TextoError)
@@ -553,7 +553,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class AjustePrecision : CedFCIC.EX.BaseApplicationException
+        public class AjustePrecision : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "No se puede ajustar ";
             public AjustePrecision(double Numero, int LongitudIncluyendoSeparador) : base(TextoError + Numero + " a " + LongitudIncluyendoSeparador + " posiciones")
@@ -567,7 +567,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class ValorInvalido : CedFCIC.EX.BaseApplicationException
+        public class ValorInvalido : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "valor inválido";
             public ValorInvalido(string descrProp) : base(descrProp + ": " + TextoError)
@@ -581,7 +581,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class ValorNoInfo : CedFCIC.EX.BaseApplicationException
+        public class ValorNoInfo : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "sin informar";
             public ValorNoInfo(string descrProp) : base(descrProp + " " + TextoError)
@@ -595,7 +595,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class ValorDesconocido : CedFCIC.EX.BaseApplicationException
+        public class ValorDesconocido : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "desconocido";
             public ValorDesconocido(string descrProp) : base(descrProp + " " + TextoError)
@@ -609,7 +609,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class FormatoPlanillaIncorrecto : CedFCIC.EX.BaseApplicationException
+        public class FormatoPlanillaIncorrecto : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "Formato planilla incorrecto";
             public FormatoPlanillaIncorrecto()
@@ -626,7 +626,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class CanalIndeterminable : CedFCIC.EX.BaseApplicationException
+        public class CanalIndeterminable : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "No se puede determinar el canal al que pertenece el ";
             public CanalIndeterminable(string descrProp) : base(TextoError + " " + descrProp)
@@ -640,7 +640,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class PerfilIndeterminable : CedFCIC.EX.BaseApplicationException
+        public class PerfilIndeterminable : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "No se puede determinar el perfil del ";
             public PerfilIndeterminable(string descrProp) : base(TextoError + " " + descrProp)
@@ -654,7 +654,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class RolDesconocido : CedFCIC.EX.BaseApplicationException
+        public class RolDesconocido : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "Rol desconocido: ";
             public RolDesconocido(string descrProp)
@@ -671,7 +671,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class MultiploDe : CedFCIC.EX.BaseApplicationException
+        public class MultiploDe : CedServicios.EX.BaseApplicationException
         {
             private static string TextoError = " debe ser múltiplo de ";
             public MultiploDe(string multiplo, string descrProp) : base(multiplo + TextoError + descrProp)
@@ -685,7 +685,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class ReadOnly : CedFCIC.EX.BaseApplicationException
+        public class ReadOnly : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "modificación inhabilitada";
             public ReadOnly(string descrProp) : base(descrProp + ": " + TextoError)
@@ -699,7 +699,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class ValorNoMatch : CedFCIC.EX.BaseApplicationException
+        public class ValorNoMatch : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "no coincide, debe ser";
             public ValorNoMatch(string descrProp, string descrPropMatch) : base(descrProp + " " + TextoError + " " + descrPropMatch)
@@ -713,7 +713,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class ValorNegativo : CedFCIC.EX.BaseApplicationException
+        public class ValorNegativo : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "debe ser mayor a cero";
             public ValorNegativo(string descrProp) : base(descrProp + ": " + TextoError)
@@ -727,7 +727,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class ValorNoNumerico : CedFCIC.EX.BaseApplicationException
+        public class ValorNoNumerico : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "debe ser numerico";
             public ValorNoNumerico(string descrProp) : base(descrProp + ": " + TextoError)
@@ -741,7 +741,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class ValorNoCombo : CedFCIC.EX.BaseApplicationException
+        public class ValorNoCombo : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "opción inválida";
             public ValorNoCombo(string descrProp) : base(descrProp + ": " + TextoError)
@@ -755,7 +755,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class OpcionInvalida : CedFCIC.EX.BaseApplicationException
+        public class OpcionInvalida : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "Opción inválida";
             public OpcionInvalida() : base(TextoError)
@@ -772,7 +772,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class LenInvalida : CedFCIC.EX.BaseApplicationException
+        public class LenInvalida : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "longitud inválida";
             public LenInvalida(string descrProp) : base(descrProp + ": " + TextoError)
@@ -786,7 +786,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class TipoNoCoincidente : CedFCIC.EX.BaseApplicationException
+        public class TipoNoCoincidente : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "el tipo de la base de datos no coincide con la propiedad";
             public TipoNoCoincidente(string descrProp) : base(descrProp + ": " + TextoError)
@@ -800,7 +800,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class NoEsMultiploDe24 : CedFCIC.EX.BaseApplicationException
+        public class NoEsMultiploDe24 : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "debe ser multiplo de 24";
             public NoEsMultiploDe24(string descrProp) : base(descrProp + ": " + TextoError)
@@ -814,7 +814,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class ListaDeExcepciones : CedFCIC.EX.BaseApplicationException
+        public class ListaDeExcepciones : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "Lista de errores: ";
             private List<System.Exception> listaE;
@@ -834,7 +834,7 @@ namespace CedFCIC.EX
         namespace CashFlow
         {
             [Serializable]
-            public class CtasMonConceptos : CedFCIC.EX.BaseApplicationException
+            public class CtasMonConceptos : CedServicios.EX.BaseApplicationException
             {
                 static string TextoError = "Se modificaron los conceptos de ingresos y/o egresos de cuentas monetarias. Actualize parámetros del sistema";
                 public CtasMonConceptos() : base(TextoError)
@@ -851,7 +851,7 @@ namespace CedFCIC.EX
         namespace Fechas
         {
             [Serializable]
-            public class FechaNoHabil : CedFCIC.EX.BaseApplicationException
+            public class FechaNoHabil : CedServicios.EX.BaseApplicationException
             {
                 static string TextoError = "Según host la fecha no es un día hábil.";
                 public FechaNoHabil(string DescrProp) : base(DescrProp + ":" + TextoError)
@@ -865,7 +865,7 @@ namespace CedFCIC.EX
                 }
             }
             [Serializable]
-            public class FechaDsdCashFlow : CedFCIC.EX.BaseApplicationException
+            public class FechaDsdCashFlow : CedServicios.EX.BaseApplicationException
             {
                 static string TextoError = "La fecha desde debe ser siempre la del día hábil anterior.";
                 public FechaDsdCashFlow(string DescrProp) : base(DescrProp + ":" + TextoError)
@@ -879,7 +879,7 @@ namespace CedFCIC.EX
                 }
             }
             [Serializable]
-            public class FechaFormatoNoValido : CedFCIC.EX.BaseApplicationException
+            public class FechaFormatoNoValido : CedServicios.EX.BaseApplicationException
             {
                 static string TextoError = "Formato incorrecto en: ";
                 public FechaFormatoNoValido(string Nombre)
@@ -896,7 +896,7 @@ namespace CedFCIC.EX
                 }
             }
             [Serializable]
-            public class FechaAñoInvalido : CedFCIC.EX.BaseApplicationException
+            public class FechaAñoInvalido : CedServicios.EX.BaseApplicationException
             {
                 static string TextoError = "Año incorrecto en";
                 public FechaAñoInvalido(string Nombre)
@@ -914,7 +914,7 @@ namespace CedFCIC.EX
             }
 
             [Serializable]
-            public class FechaMesInvalido : CedFCIC.EX.BaseApplicationException
+            public class FechaMesInvalido : CedServicios.EX.BaseApplicationException
             {
                 static string TextoError = "Mes incorrecto en ";
                 public FechaMesInvalido(string Nombre)
@@ -931,7 +931,7 @@ namespace CedFCIC.EX
                 }
             }
             [Serializable]
-            public class FechaDiaInvalido : CedFCIC.EX.BaseApplicationException
+            public class FechaDiaInvalido : CedServicios.EX.BaseApplicationException
             {
                 static string TextoError = "Dia Incorrecto en ";
                 public FechaDiaInvalido(string Nombre)
@@ -951,7 +951,7 @@ namespace CedFCIC.EX
         namespace Operaciones
         {
             [Serializable]
-            public class NoBalancea : CedFCIC.EX.BaseApplicationException
+            public class NoBalancea : CedServicios.EX.BaseApplicationException
             {
                 static string TextoError = "La operación no balancea. Verifique la Diferencia.";
                 public NoBalancea() : base(TextoError)
@@ -965,7 +965,7 @@ namespace CedFCIC.EX
                 }
             }
             [Serializable]
-            public class DetalleNoIngresado : CedFCIC.EX.BaseApplicationException
+            public class DetalleNoIngresado : CedServicios.EX.BaseApplicationException
             {
                 static string TextoError = "La operación debe contener, al menos, dos minutas";
                 public DetalleNoIngresado() : base(TextoError)
@@ -979,7 +979,7 @@ namespace CedFCIC.EX
                 }
             }
             [Serializable]
-            public class MinutaAutomatica : CedFCIC.EX.BaseApplicationException
+            public class MinutaAutomatica : CedServicios.EX.BaseApplicationException
             {
                 static string TextoError = "Opcion invalida en minuta automatica";
                 public MinutaAutomatica() : base(TextoError)
@@ -993,7 +993,7 @@ namespace CedFCIC.EX
                 }
             }
             [Serializable]
-            public class CierreCambioNoIngresado : CedFCIC.EX.BaseApplicationException
+            public class CierreCambioNoIngresado : CedServicios.EX.BaseApplicationException
             {
                 static string TextoError = "Cierre de Cambio no ingresado";
                 public CierreCambioNoIngresado() : base(TextoError)
@@ -1007,7 +1007,7 @@ namespace CedFCIC.EX
                 }
             }
             [Serializable]
-            public class UNincongruente : CedFCIC.EX.BaseApplicationException
+            public class UNincongruente : CedServicios.EX.BaseApplicationException
             {
                 static string TextoError = "Hay, al menos, una minuta que referencia a una cuenta de otra unidad de negocio";
                 public UNincongruente() : base(TextoError)
@@ -1021,7 +1021,7 @@ namespace CedFCIC.EX
                 }
             }
             [Serializable]
-            public class Fechaincongruente : CedFCIC.EX.BaseApplicationException
+            public class Fechaincongruente : CedServicios.EX.BaseApplicationException
             {
                 static string TextoError = "Hay, al menos, una minuta con un vencimiento establecido. Para modificar la fecha de la operación, dé de baja la minuta y depure.";
                 public Fechaincongruente() : base(TextoError)
@@ -1035,7 +1035,7 @@ namespace CedFCIC.EX
                 }
             }
             [Serializable]
-            public class NoEnEstadoFinal : CedFCIC.EX.BaseApplicationException
+            public class NoEnEstadoFinal : CedServicios.EX.BaseApplicationException
             {
                 static string TextoError = "Existe al menos una operación que no se encuentra en estado final.";
                 public NoEnEstadoFinal() : base(TextoError)
@@ -1049,7 +1049,7 @@ namespace CedFCIC.EX
                 }
             }
             [Serializable]
-            public class PreciosNoEnEstadoFinal : CedFCIC.EX.BaseApplicationException
+            public class PreciosNoEnEstadoFinal : CedServicios.EX.BaseApplicationException
             {
                 static string TextoError = "Existe al menos un precio que no se encuentra en estado final.";
                 public PreciosNoEnEstadoFinal() : base(TextoError)
@@ -1063,7 +1063,7 @@ namespace CedFCIC.EX
                 }
             }
             [Serializable]
-            public class TasaCAyCCENoEnEstadoFinal : CedFCIC.EX.BaseApplicationException
+            public class TasaCAyCCENoEnEstadoFinal : CedServicios.EX.BaseApplicationException
             {
                 static string TextoError = "Existe al menos una tasa que no se encuentra en estado final.";
                 public TasaCAyCCENoEnEstadoFinal() : base(TextoError)
@@ -1077,7 +1077,7 @@ namespace CedFCIC.EX
                 }
             }
             [Serializable]
-            public class CierreDeCambioNoEnEstadoFinal : CedFCIC.EX.BaseApplicationException
+            public class CierreDeCambioNoEnEstadoFinal : CedServicios.EX.BaseApplicationException
             {
                 static string TextoError = "Existe al menos un cierre de cambio que no se encuentra en estado final.";
                 public CierreDeCambioNoEnEstadoFinal() : base(TextoError)
@@ -1093,7 +1093,7 @@ namespace CedFCIC.EX
             namespace Minutas
             {
                 [Serializable]
-                public class UNincongruente : CedFCIC.EX.BaseApplicationException
+                public class UNincongruente : CedServicios.EX.BaseApplicationException
                 {
                     static string TextoError = "Unidad de Negocio incongruente.  No se incorporará la minuta.";
                     public UNincongruente() : base(TextoError)
@@ -1107,7 +1107,7 @@ namespace CedFCIC.EX
                     }
                 }
                 [Serializable]
-                public class IndiceFueraDeRango : CedFCIC.EX.BaseApplicationException
+                public class IndiceFueraDeRango : CedServicios.EX.BaseApplicationException
                 {
                     static string TextoError = "Unidad de Negocio incongruente.  No se incorporará la minuta.";
                     public IndiceFueraDeRango() : base(TextoError)
@@ -1121,7 +1121,7 @@ namespace CedFCIC.EX
                     }
                 }
                 [Serializable]
-                public class ConvinacionTipoMovProductoInvalido : CedFCIC.EX.BaseApplicationException
+                public class ConvinacionTipoMovProductoInvalido : CedServicios.EX.BaseApplicationException
                 {
                     static string TextoError = "Tipo de movimiento, en Producto, inválido";
                     public ConvinacionTipoMovProductoInvalido() : base(TextoError)
@@ -1135,7 +1135,7 @@ namespace CedFCIC.EX
                     }
                 }
                 [Serializable]
-                public class CantidadCPResc : CedFCIC.EX.BaseApplicationException
+                public class CantidadCPResc : CedServicios.EX.BaseApplicationException
                 {
                     static string TextoError = "No se pueden rescatar mas cuotapartes de las suscriptas";
                     public CantidadCPResc() : base(TextoError)
@@ -1149,7 +1149,7 @@ namespace CedFCIC.EX
                     }
                 }
                 [Serializable]
-                public class ImporteAPagarNegativo : CedFCIC.EX.BaseApplicationException
+                public class ImporteAPagarNegativo : CedServicios.EX.BaseApplicationException
                 {
                     static string TextoError = "Las deducciones deben ser menor al capital más los intereses";
                     public ImporteAPagarNegativo() : base(TextoError)
@@ -1163,7 +1163,7 @@ namespace CedFCIC.EX
                     }
                 }
                 [Serializable]
-                public class VentaTitulos : CedFCIC.EX.BaseApplicationException
+                public class VentaTitulos : CedServicios.EX.BaseApplicationException
                 {
                     static string TextoError = "La cantidad(VN) disponible no es suficiente: ";
                     public VentaTitulos(decimal Cantidad) : base(TextoError + Cantidad)
@@ -1177,7 +1177,7 @@ namespace CedFCIC.EX
                     }
                 }
                 [Serializable]
-                public class DifCamEnCtaPesos : CedFCIC.EX.BaseApplicationException
+                public class DifCamEnCtaPesos : CedServicios.EX.BaseApplicationException
                 {
                     static string TextoError = "Los movimientos de diferencia de cambio no se pueden aplicar a rubros en pesos";
                     public DifCamEnCtaPesos() : base(TextoError)
@@ -1191,7 +1191,7 @@ namespace CedFCIC.EX
                     }
                 }
                 [Serializable]
-                public class DifCamTipoMovInvalido : CedFCIC.EX.BaseApplicationException
+                public class DifCamTipoMovInvalido : CedServicios.EX.BaseApplicationException
                 {
                     static string TextoError = "Tipo de movimiento invalido en operacion de Diferencia de Cambio";
                     public DifCamTipoMovInvalido() : base(TextoError)
@@ -1209,7 +1209,7 @@ namespace CedFCIC.EX
         namespace Cuentas
         {
             [Serializable]
-            public class Duplicada : CedFCIC.EX.BaseApplicationException
+            public class Duplicada : CedServicios.EX.BaseApplicationException
             {
                 static string TextoError = "No se pudo dar de alta esa cuenta porque ya está cargada.";
                 public Duplicada() : base(TextoError)
@@ -1222,7 +1222,7 @@ namespace CedFCIC.EX
                 {
                 }
             }
-            public class IdCuentaDuplicado : CedFCIC.EX.BaseApplicationException
+            public class IdCuentaDuplicado : CedServicios.EX.BaseApplicationException
             {
                 static string TextoError = "El nuevo Id. de cuenta generaría valores duplicados";
                 public IdCuentaDuplicado() : base(TextoError)
@@ -1236,7 +1236,7 @@ namespace CedFCIC.EX
                 }
             }
             [Serializable]
-            public class TasaDuplicada : CedFCIC.EX.BaseApplicationException
+            public class TasaDuplicada : CedServicios.EX.BaseApplicationException
             {
                 static string TextoError = "Esa tasa ya existe en el sistema.";
                 public TasaDuplicada() : base(TextoError)
@@ -1568,7 +1568,7 @@ namespace CedFCIC.EX
     namespace Aplicacion
     {
         [Serializable]
-        public class AssemblyVersionInvalida : CedFCIC.EX.BaseApplicationException
+        public class AssemblyVersionInvalida : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "Versión desactualizada";
             public AssemblyVersionInvalida(string VersionNoActualizada, string VersionVigente)
@@ -1625,7 +1625,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class Existente : CedFCIC.EX.Permiso.BaseApplicationException
+        public class Existente : CedServicios.EX.Permiso.BaseApplicationException
         {
             static string TextoError = "Este permiso ya ha sido solicitado y está en estado ";
             public Existente(string estado)
@@ -1645,7 +1645,7 @@ namespace CedFCIC.EX
     namespace Cuit
     {
         [Serializable]
-        public class NingunServicioSeleccionado : CedFCIC.EX.BaseApplicationException
+        public class NingunServicioSeleccionado : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "Servicio no informado (debe elegir al menos uno)";
             public NingunServicioSeleccionado()
@@ -1662,7 +1662,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class NingunDestinoComprobanteSeleccionado : CedFCIC.EX.BaseApplicationException
+        public class NingunDestinoComprobanteSeleccionado : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "Destino de Comprobante no informado (debe elegir al menos uno)";
             public NingunDestinoComprobanteSeleccionado()
@@ -1683,7 +1683,7 @@ namespace CedFCIC.EX
     {
 
         [Serializable]
-        public class ArticuloInex : CedFCIC.EX.BaseApplicationException
+        public class ArticuloInex : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "Los precios de la planilla NO FUERON IMPORTADOS porque hay artículos desconocidos.  Corrija esta situación y vuelva a importar los precios.  Artículo(s) inexistente(s):";
             public ArticuloInex(string descrProp)
@@ -1700,7 +1700,7 @@ namespace CedFCIC.EX
             }
         }
         [Serializable]
-        public class ListaPrecioInex : CedFCIC.EX.BaseApplicationException
+        public class ListaPrecioInex : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "Los precios de la planilla NO FUERON IMPORTADOS porque hay listas de precios desconocidas.  Corrija esta situación y vuelva a importar los precios.  Lista(s) de Precios inexistente(s):";
             public ListaPrecioInex(string descrProp)

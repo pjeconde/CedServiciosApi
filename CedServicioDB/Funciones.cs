@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-namespace CedFCIC.DB
+namespace CedServicios.DB
 {
     public class Funciones
     {

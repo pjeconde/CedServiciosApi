@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 using System.IO;
 using System.Security.Cryptography;
 
-namespace CedFCIC.RN
+namespace CedServicios.RN
 {
     public class Funciones
     {

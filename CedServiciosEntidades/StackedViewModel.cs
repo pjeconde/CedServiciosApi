@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
-namespace CedFCIC.Entidades
+namespace CedServicios.Entidades
 {
     public class StackedViewModel
     {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using CedFCIC;
+using CedServicios;
 using System.IO;
 
-namespace CedFCIC.RN
+namespace CedServicios.RN
 {
     public class Sesion
     {
@@ -21,7 +21,7 @@ namespace CedFCIC.RN
 
         public static List<Entidades.Opcion> Opciones(Entidades.Sesion Sesion)
         {
-            List<CedFCIC.Entidades.Opcion> opciones = new List<CedFCIC.Entidades.Opcion>();
+            List<CedServicios.Entidades.Opcion> opciones = new List<CedServicios.Entidades.Opcion>();
             if (Sesion.Usuario.Id != null)
             {
 
@@ -497,8 +497,8 @@ namespace CedFCIC.RN
         {
             Sesion.Cuit = Cuit;
             Sesion.Cuit.UNs = RN.UN.ListaPorCuitParaElUsuarioLogueado(Sesion);
-            //Sesion.ClientesDelCuit = RN.Persona.ListaPorCuit(false, CedFCIC.Entidades.Enum.TipoPersona.Cliente, Sesion);
-            //Sesion.ProveedoresDelCuit = RN.Persona.ListaPorCuit(false, CedFCIC.Entidades.Enum.TipoPersona.Proveedor, Sesion);
+            //Sesion.ClientesDelCuit = RN.Persona.ListaPorCuit(false, CedServicios.Entidades.Enum.TipoPersona.Cliente, Sesion);
+            //Sesion.ProveedoresDelCuit = RN.Persona.ListaPorCuit(false, CedServicios.Entidades.Enum.TipoPersona.Proveedor, Sesion);
             List<Entidades.UN> estaLaUNEnLaLista = new List<Entidades.UN>();
             if (Sesion.Cuit.UNs.Count != 0)
             {

@@ -3,26 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CedFCIC.RN
+namespace CedServicios.RN
 {
     public class Usuario
     {
         public static void Leer(Entidades.Usuario Usuario, Entidades.Sesion Sesion)
         {
-            CedFCIC.DB.Usuario db = new  DB.Usuario(Sesion);
+            CedServicios.DB.Usuario db = new  DB.Usuario(Sesion);
             db.Leer(Usuario);
         }
         public static void Login(Entidades.Usuario Usuario, Entidades.Sesion Sesion)
         {
             if (Usuario.Id == null || Usuario.Id == String.Empty)
             {
-                throw new CedFCIC.EX.Validaciones.ValorNoInfo("Id.Usuario");
+                throw new CedServicios.EX.Validaciones.ValorNoInfo("Id.Usuario");
             }
             else
             {
                 if (Usuario.Password == null || Usuario.Password == String.Empty)
                 {
-                    throw new CedFCIC.EX.Validaciones.ValorNoInfo("Contraseña");
+                    throw new CedServicios.EX.Validaciones.ValorNoInfo("Contraseña");
                 }
                 else
                 {
@@ -30,13 +30,13 @@ namespace CedFCIC.RN
                     Leer(Usuario, Sesion);
                     if (passwordIngresada != Usuario.Password)
                     {
-                        throw new CedFCIC.EX.Usuario.LoginRechazadoXPasswordInvalida();
+                        throw new CedServicios.EX.Usuario.LoginRechazadoXPasswordInvalida();
                     }
                     //Se impide el login a cuenta pendientes de confirmacion o dadas de baja
                     //(las cuentas "Prem" suspendidas se comportan como cuentas "Free")
                     if (Usuario.WF.Estado != "Vigente")
                     {
-                        throw new CedFCIC.EX.Usuario.LoginRechazadoXEstadoCuenta();
+                        throw new CedServicios.EX.Usuario.LoginRechazadoXEstadoCuenta();
                     }
                 }
             }
@@ -210,7 +210,7 @@ namespace CedFCIC.RN
         }
         public static void RegistrarAceptacioneFactTyC(Entidades.Sesion Sesion)
         {
-            CedFCIC.DB.Configuracion db = new DB.Configuracion(Sesion);
+            CedServicios.DB.Configuracion db = new DB.Configuracion(Sesion);
             db.CrearFechaOKeFactTyC(Sesion.Usuario);
         }
         public static void ReenviarMail(Entidades.Usuario Usuario, Entidades.Sesion Sesion)
@@ -239,7 +239,7 @@ namespace CedFCIC.RN
         }
         public static void SetearMostrarAyudaComoPaginaDefault(Entidades.Sesion Sesion, bool Valor)
         {
-            CedFCIC.DB.Configuracion db = new DB.Configuracion(Sesion);
+            CedServicios.DB.Configuracion db = new DB.Configuracion(Sesion);
             Entidades.Configuracion configuracion = new Entidades.Configuracion();
             configuracion.IdUsuario = Sesion.Usuario.Id;
             configuracion.Cuit = String.Empty;

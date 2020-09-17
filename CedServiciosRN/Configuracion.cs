@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using CedFCIC;
+using CedServicios;
 
-namespace CedFCIC.RN
+namespace CedServicios.RN
 {
     public class Configuracion
     {

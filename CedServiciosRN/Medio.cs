@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using CedFCIC;
+using CedServicios;
 
-namespace CedFCIC.RN
+namespace CedServicios.RN
 {
     public class Medio
     {
         public static List<Entidades.Medio> Lista(Entidades.Sesion Sesion)
         {
-            CedFCIC.DB.Medio db = new DB.Medio(Sesion);
+            CedServicios.DB.Medio db = new DB.Medio(Sesion);
             return db.LeerLista();
         }
         //public List<Entidades.Medio> ConsultaListaMedio()
@@ -24,7 +24,7 @@ namespace CedFCIC.RN
         //    medio = dbMedio.ConsultaMedio(IdMedio, out Resp);
         //    return medio;
         //}
-        //public string InsertarMedio(CedFCIC.Entidades.Medio Medio)
+        //public string InsertarMedio(CedServicios.Entidades.Medio Medio)
         //{
         //    DB.Medio dbMedio = new DB.Medio();
         //    string resp = dbMedio.InsertarMedio(Medio);

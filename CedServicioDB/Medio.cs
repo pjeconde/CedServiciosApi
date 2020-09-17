@@ -2,9 +2,9 @@
 using System.Data;
 using System.Collections.Generic;
 using System.Text;
-using CedFCIC;
+using CedServicios;
 
-namespace CedFCIC.DB
+namespace CedServicios.DB
 {
     public class Medio : db
     {

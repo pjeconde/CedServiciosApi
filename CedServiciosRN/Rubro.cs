@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CedFCIC.RN
+namespace CedServicios.RN
 {
     public class Rubro
     {
         public static void LeerEsquemaContable(Entidades.EsquemaContable EsquemaContable, Entidades.Sesion Sesion)
         {
-            CedFCIC.DB.Rubro db = new DB.Rubro(Sesion);
+            CedServicios.DB.Rubro db = new DB.Rubro(Sesion);
             db.LeerEsquemaContable(EsquemaContable);
         }
     }

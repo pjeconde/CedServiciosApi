@@ -3,7 +3,7 @@ using System.Data;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CedFCIC.DB
+namespace CedServicios.DB
 {
     public class Usuario : db
     {
@@ -26,7 +26,7 @@ namespace CedFCIC.DB
             DataTable dt = (DataTable)Ejecutar(a.ToString(), TipoRetorno.TB, Transaccion.NoAcepta, sesion.CnnStr);
             if (dt.Rows.Count == 0)
             {
-                throw new CedFCIC.EX.Validaciones.ElementoInexistente("Usuario " + Usuario.Id);
+                throw new CedServicios.EX.Validaciones.ElementoInexistente("Usuario " + Usuario.Id);
             }
             else
             {
