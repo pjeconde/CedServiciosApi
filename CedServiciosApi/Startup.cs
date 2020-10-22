@@ -62,7 +62,7 @@ namespace CedServiciosApi
                 //System.Collections.Generic.List<CedAC.Entidades.RolSegurInf> listaRoles = db.ListaRoles();
                 //string grupoAD = listaRoles[0].GrupoAD;
 
-                services.AddAuthorization();
+                //services.AddAuthorization();
 
                 //services.AddAuthorization(options =>
                 //{
@@ -111,18 +111,19 @@ namespace CedServiciosApi
                 return;
             }
 
-            //app.UseExceptionHandler("/Home/Error");
-            app.UseStaticFiles();
-            app.UseSession();
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
 
-            //app.UseMvc(routes =>
-            //{
-            //    routes.MapRoute(
-            //        name: "default",
-            //        template: "{controller=Home}/{action=Index}/{id?}");
-            //});
-            
-            app.UseDeveloperExceptionPage();
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 

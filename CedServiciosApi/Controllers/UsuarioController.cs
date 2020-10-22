@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace CedServiciosApi.Controllers
 {
@@ -12,16 +14,19 @@ namespace CedServiciosApi.Controllers
     [ApiController]
     public class UsuarioController : ACController
     {
-        public UsuarioController() : base()
+        public UsuarioController(IOptions<AppSettings> settings, IMemoryCache cache) : base(settings, cache)
         {
         }
+
+        [Route("Ingresar")]
         [HttpGet]
-        public CedServicios.Entidades.Sesion Ingresar(string Usuario, string Clave)
+        public IEnumerable<CedServicios.Entidades.Sesion> Ingresar()
         {
             //Entidades.Sesion sesion = HttpContext.Session.GetObj<Entidades.Sesion>("Sesion");
             CedServicios.Entidades.Sesion sesion = new CedServicios.Entidades.Sesion();
-            sesion = CrearSesion();
-            return sesion;
+            sesion = ObtenerSesion();
+
+            yield return sesion;
         }
 
         // GET: api/Usuario/5
@@ -55,13 +60,13 @@ namespace CedServiciosApi.Controllers
         //    s.CnnStr = Microsoft.Extensions.Configuration.GetConnectionString("DefaultConnection");
         //    s.AdministradoresSiteEmail = Configuration.GetValue<string>("AppSettings:Mantenedores");
         //    s.Ambiente = Configuration.GetValue<string>("AppSettings:Ambiente");
-        //    s.Opciones = CedServicios.RN.Sesion.Opciones(s);
         //    s.OpcionesHabilitadas = CedServicios.RN.Sesion.OpcionesHabilitadas(s);
         //    s.Usuario = new Entidades.Usuario();
         //    s.URLsite = HttpContext.Request.Host.Value.ToString();  //HttpContext.Request.Path.Value.ToString();
         //    HttpContext.Session.Set("UsuarioId", System.Text.UTF8Encoding.UTF8.GetBytes(Environment.UserName));
         //    HttpContext.Session.SetObj("Sesion", s);
         //    return s;
-        //}
+        //}   //    s.Opciones = CedServicios.RN.Sesion.Opciones(s);
+     
     }
 }
