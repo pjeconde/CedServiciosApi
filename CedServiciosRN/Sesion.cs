@@ -19,6 +19,19 @@ namespace CedServicios.RN
             Sesion.OpcionesHabilitadas = OpcionesHabilitadas(Sesion);
         }
 
+        public static void Crear(string Ambiente, string CnnStr, CedServicios.Entidades.Sesion Sesion)
+        {
+            try
+            {
+                Sesion.Ambiente = Ambiente;
+                Sesion.CnnStr = CnnStr;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static List<Entidades.Opcion> Opciones(Entidades.Sesion Sesion)
         {
             List<CedServicios.Entidades.Opcion> opciones = new List<CedServicios.Entidades.Opcion>();

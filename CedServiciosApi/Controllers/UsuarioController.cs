@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 
 namespace CedServiciosApi.Controllers
@@ -14,19 +9,23 @@ namespace CedServiciosApi.Controllers
     [ApiController]
     public class UsuarioController : ACController
     {
-        public UsuarioController(IOptions<AppSettings> settings, IMemoryCache cache) : base(settings, cache)
+        public UsuarioController(Models.ACContext context,IOptions<AppSettings> settings, IMemoryCache cache) : base(context,settings, cache)
         {
         }
 
         [Route("Ingresar")]
         [HttpGet]
-        public IEnumerable<CedServicios.Entidades.Sesion> Ingresar()
+        public IEnumerable<CedServicios.Entidades.Usuario> Ingresar(string id, string password)
         {
             //Entidades.Sesion sesion = HttpContext.Session.GetObj<Entidades.Sesion>("Sesion");
             CedServicios.Entidades.Sesion sesion = new CedServicios.Entidades.Sesion();
             sesion = ObtenerSesion();
+            CedServicios.Entidades.Usuario usuario = new CedServicios.Entidades.Usuario();
+            usuario.Id = id;
+            usuario.Password = password;
+            CedServicios.RN.Usuario.Login(usuario, sesion);
 
-            yield return sesion;
+            yield return usuario;
         }
 
         // GET: api/Usuario/5

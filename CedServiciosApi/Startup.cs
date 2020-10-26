@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace CedServiciosApi
@@ -50,15 +51,14 @@ namespace CedServiciosApi
                 string dbUsuario = Configuration.GetValue<string>("AppSettings:DBUsuario");
                 string dbClave = Configuration.GetValue<string>("AppSettings:DBClave");
                 services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
-                string cnnStr = String.Format(Configuration.GetConnectionString("DefaultConnection"), dbUsuario, dbClave);
+                //string cnnStr = String.Format(Configuration.GetConnectionString("DefaultConnection"), dbUsuario, dbClave);
 
-                //services.AddDbContext<CedPACcore.Models.ACContext>(options => options.UseSqlServer(
-                //   cnnStr
-                //   ));
+                string cnnStr = Configuration.GetConnectionString("DefaultConnection");
+                services.AddDbContext<Models.ACContext>(options => options.UseSqlServer(
+                   cnnStr
+                   ));
 
-                CedServicios.Entidades.Sesion sesion = new CedServicios.Entidades.Sesion();
-                sesion.CnnStr = cnnStr;
-                sesion.Ambiente = ambiente;
+
                 //System.Collections.Generic.List<CedAC.Entidades.RolSegurInf> listaRoles = db.ListaRoles();
                 //string grupoAD = listaRoles[0].GrupoAD;
 
