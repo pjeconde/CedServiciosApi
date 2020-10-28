@@ -281,7 +281,6 @@ namespace CedServicios.DB
                 a.Append(Usuario.Password + "', '");
                 a.Append(Usuario.Pregunta + "', '");
                 a.Append(Usuario.Respuesta + "', ");
-                a.Append(Usuario.Estado + "', ");
 
             }
             a.Append("select * ");

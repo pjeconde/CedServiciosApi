@@ -1137,7 +1137,7 @@ namespace CedServicios.DB
             {
                 OrderBy = "#Comprobante" + SessionID + "." + OrderBy;
             }
-            string commandText = string.Format(a.ToString(), ((IndicePagina + 1) * sesion.Usuario.CantidadFilasXPagina), OrderBy, (IndicePagina * sesion.Usuario.CantidadFilasXPagina));
+            string commandText = string.Format(a.ToString(), OrderBy);
             DataTable dt = new DataTable();
             dt = (DataTable)Ejecutar(commandText.ToString(), TipoRetorno.TB, Transaccion.NoAcepta, sesion.CnnStr);
             List<Entidades.Comprobante> lista = new List<Entidades.Comprobante>();
@@ -1342,7 +1342,7 @@ namespace CedServicios.DB
                 }
                 aSelectPaging.Append(a);
                 aSelectPaging.Append("ORDER BY ROW_NUM) innerSelect WHERE ROW_NUM > {2} ");
-                string commandText = string.Format(aSelectPaging.ToString(), ((IndicePagina) * sesion.Usuario.CantidadFilasXPagina), OrderByQuery, ((IndicePagina - 1) * sesion.Usuario.CantidadFilasXPagina));
+                string commandText = string.Format(aSelectPaging.ToString(), OrderByQuery);
                 commandText = commandText + aSelect;
                 DataSet ds = (DataSet)Ejecutar(commandText.ToString(), TipoRetorno.DS, Transaccion.NoAcepta, sesion.CnnStr);
                 if (ds.Tables.Count != 0)

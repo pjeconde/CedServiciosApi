@@ -95,15 +95,7 @@ namespace CedServicios.RN
         //    usuario.Crear(Usuario);
         //    if (EnviarCorreo) RN.EnvioCorreo.ConfirmacionAltaUsuario(Usuario, Sesion);
         //}
-        public static void Confirmar(Entidades.Usuario Usuario, bool DesencriptarUsuario, bool EnviarCorreo, Entidades.Sesion Sesion)
-        {
-            if (DesencriptarUsuario) Usuario.Id = RN.Funciones.Desencriptar(Usuario.Id);    //Encryptor.Decrypt(Usuario.Id, "srgerg$%^bg", Convert.FromBase64String("srfjuoxp"));
-            Leer(Usuario, (Entidades.Sesion)Sesion);
-            DB.Usuario usuario = new DB.Usuario((Entidades.Sesion)Sesion);
-            usuario.Confirmar(Usuario);
-            Leer(Usuario, (Entidades.Sesion)Sesion);
-            if (EnviarCorreo) RN.EnvioSMS.Enviar("Alta cuenta " + CantidadDeFilas((Entidades.Sesion)Sesion).ToString(), Usuario.Nombre + " (" + Usuario.Email + ") - IdUsuario: " + Usuario.Id, usuario.DestinatariosAvisoAltaUsuario());
-        }
+
         public static bool IdCuentaDisponible(Entidades.Usuario Usuario, Entidades.Sesion Sesion)
         {
             if (Usuario.Id == String.Empty)

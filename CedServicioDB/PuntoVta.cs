@@ -298,7 +298,7 @@ namespace CedServicios.DB
             {
                 OrderBy = "#PuntoVta" + SessionID + "." + OrderBy;
             }
-            string commandText = string.Format(a.ToString(), ((IndicePagina + 1) * sesion.Usuario.CantidadFilasXPagina), OrderBy, (IndicePagina * sesion.Usuario.CantidadFilasXPagina));
+            string commandText = string.Format(a.ToString(), OrderBy);
             DataTable dt = new DataTable();
             dt = (DataTable)Ejecutar(commandText.ToString(), TipoRetorno.TB, Transaccion.NoAcepta, sesion.CnnStr);
             List<Entidades.PuntoVta> lista = new List<Entidades.PuntoVta>();

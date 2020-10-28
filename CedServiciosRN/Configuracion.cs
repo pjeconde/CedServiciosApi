@@ -19,20 +19,7 @@ namespace CedServicios.RN
             configuracion.Valor = String.Empty;
             db.Crear(configuracion);
         }
-        public static void EstablecerCantidadFilasXPagina(int CantidadFilasXPagina, Entidades.Sesion Sesion)
-        {
-            DB.Configuracion db = new DB.Configuracion(Sesion);
-            db.ElimninarCantidadFilasXPagina(Sesion.Usuario.Id);
-            Entidades.Configuracion configuracion = new Entidades.Configuracion();
-            configuracion.IdUsuario = Sesion.Usuario.Id;
-            configuracion.Cuit = String.Empty;
-            configuracion.IdUN = 0;
-            configuracion.TipoPermiso.Id = String.Empty;
-            configuracion.IdItemConfig = "CantidadFilasXPagina";
-            configuracion.Valor = CantidadFilasXPagina.ToString();
-            db.Crear(configuracion);
-            Sesion.Usuario.CantidadFilasXPagina = CantidadFilasXPagina;
-        }
+
         public static List<Entidades.Configuracion> ListaSegunFiltros(string Cuit, string IdUN, string IdUsuario, string IdTipoPermiso, string IdItemConfig, Entidades.Sesion Sesion)
         {
             DB.Configuracion Configuracion = new DB.Configuracion(Sesion);
