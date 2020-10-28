@@ -251,25 +251,6 @@ namespace CedServicios.Entidades
         //        return "~/Factura/Ayuda/Instructivas/OperarFacturaElectronica001";
         //}
 
-        #region Propiedades redundantes
-        public string Estado
-        {
-            get
-            {
-                return wF.Estado;
-            }
-        }
-        public string EstadoId
-        {
-            set
-            {
-                wF.Estado = value;
-            }
-            get
-            {
-                return wF.Estado;
-            }
-        }
-        #endregion
+
     }
 }

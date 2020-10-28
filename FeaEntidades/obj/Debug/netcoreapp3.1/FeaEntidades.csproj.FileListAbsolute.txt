@@ -1,7 +1,6 @@
 C:\Sistemas\CedServiciosApi\FeaEntidades\bin\Debug\netcoreapp3.1\FeaEntidades.deps.json
 C:\Sistemas\CedServiciosApi\FeaEntidades\bin\Debug\netcoreapp3.1\FeaEntidades.dll
 C:\Sistemas\CedServiciosApi\FeaEntidades\bin\Debug\netcoreapp3.1\FeaEntidades.pdb
-C:\Sistemas\CedServiciosApi\FeaEntidades\obj\Debug\netcoreapp3.1\FeaEntidades.csprojAssemblyReference.cache
 C:\Sistemas\CedServiciosApi\FeaEntidades\obj\Debug\netcoreapp3.1\FeaEntidades.AssemblyInfoInputs.cache
 C:\Sistemas\CedServiciosApi\FeaEntidades\obj\Debug\netcoreapp3.1\FeaEntidades.AssemblyInfo.cs
 C:\Sistemas\CedServiciosApi\FeaEntidades\obj\Debug\netcoreapp3.1\FeaEntidades.csproj.CoreCompileInputs.cache

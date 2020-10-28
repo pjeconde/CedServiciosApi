@@ -87,83 +87,14 @@ namespace CedServicios.RN
 
         }
 
-        public static void ValidarCrear(Entidades.UsuarioCrear Usuario, Entidades.Sesion Sesion)
-        {
-            if (Usuario.Nombre == String.Empty)
-            {
-                throw new EX.Validaciones.ValorNoInfo("Nombre y Apellido");
-            }
-            else
-            {
-                if (Usuario.Email == String.Empty)
-                {
-                    throw new EX.Validaciones.ValorNoInfo("Email");
-                }
-                else
-                {
-                    if (!RN.Funciones.EsEmail(Usuario.Email))
-                    {
-                        throw new EX.Validaciones.ValorInvalido("Email");
-                    }
-                    else
-                    {
-                        if (Usuario.Id == String.Empty)
-                        {
-                            throw new EX.Validaciones.ValorNoInfo("Id.Usuario");
-                        }
-                        else
-                        {
-                            if (!IdCuentaDisponible(Usuario, Sesion))
-                            {
-                                throw new EX.Usuario.IdUsuarioNoDisponible();
-                            }
-                            else
-                            {
-                                if (Usuario.Password == String.Empty)
-                                {
-                                    throw new EX.Validaciones.ValorNoInfo("Contraseña");
-                                }
-                                else
-                                {
-                                    if (Usuario.ConfirmacionPassword == String.Empty)
-                                    {
-                                        throw new EX.Validaciones.ValorNoInfo("Confirmación de Contraseña");
-                                    }
-                                    else
-                                    {
-                                        if (Usuario.Password != Usuario.ConfirmacionPassword)
-                                        {
-                                            throw new EX.Usuario.PasswordYConfirmacionNoCoincidente();
-                                        }
-                                        else
-                                        {
-                                            if (Usuario.Pregunta == String.Empty)
-                                            {
-                                                throw new EX.Validaciones.ValorNoInfo("Pregunta");
-                                            }
-                                            else
-                                            {
-                                                if (Usuario.Respuesta == String.Empty)
-                                                {
-                                                    throw new EX.Validaciones.ValorNoInfo("Respuesta");
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        public static void Registrar(Entidades.UsuarioCrear Usuario, bool EnviarCorreo, Entidades.Sesion Sesion)
-        {
-            Usuario.WF.Estado = "PteConf";
-            DB.Usuario usuario = new DB.Usuario(Sesion);
-            usuario.Crear(Usuario);
-            if (EnviarCorreo) RN.EnvioCorreo.ConfirmacionAltaUsuario(Usuario, Sesion);
-        }
+  
+        //public static void Registrar(Entidades.UsuarioCrear Usuario, bool EnviarCorreo, Entidades.Sesion Sesion)
+        //{
+        //    Usuario.WF.Estado = "PteConf";
+        //    DB.Usuario usuario = new DB.Usuario(Sesion);
+        //    usuario.Crear(Usuario);
+        //    if (EnviarCorreo) RN.EnvioCorreo.ConfirmacionAltaUsuario(Usuario, Sesion);
+        //}
         public static void Confirmar(Entidades.Usuario Usuario, bool DesencriptarUsuario, bool EnviarCorreo, Entidades.Sesion Sesion)
         {
             if (DesencriptarUsuario) Usuario.Id = RN.Funciones.Desencriptar(Usuario.Id);    //Encryptor.Decrypt(Usuario.Id, "srgerg$%^bg", Convert.FromBase64String("srfjuoxp"));
@@ -277,22 +208,6 @@ namespace CedServicios.RN
             int cantidadFilas = listaUsuario.Count;
             CantidadFilas = cantidadFilas;
             return db.ListaPaging(IndicePagina, OrderBy, SessionID, listaUsuario);
-        }
-        public static void SetearMostrarAyudaComoPaginaDefault(Entidades.Sesion Sesion, bool Valor)
-        {
-            CedServicios.DB.Configuracion db = new DB.Configuracion(Sesion);
-            Entidades.Configuracion configuracion = new Entidades.Configuracion();
-            configuracion.IdUsuario = Sesion.Usuario.Id;
-            configuracion.Cuit = String.Empty;
-            configuracion.IdUN = 0;
-            configuracion.TipoPermiso.Id = String.Empty;
-            configuracion.IdItemConfig = "MostrarAyudaComoPaginaDefault";
-            if (Valor)
-                configuracion.Valor = "SI";
-            else
-                configuracion.Valor = "NO";
-            db.SetearValor(configuracion);
-            Sesion.Usuario.MostrarAyudaComoPaginaDefault = configuracion.Valor == "SI";
         }
     }
 }
