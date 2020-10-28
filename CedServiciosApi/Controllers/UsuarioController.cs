@@ -15,17 +15,17 @@ namespace CedServiciosApi.Controllers
 
         [Route("Ingresar")]
         [HttpGet]
-        public IEnumerable<CedServicios.Entidades.Usuario> Ingresar(string id, string password)
+        public IEnumerable<CedServicios.Entidades.Respuesta> Ingresar(string id, string password)
         {
-            //Entidades.Sesion sesion = HttpContext.Session.GetObj<Entidades.Sesion>("Sesion");
-            CedServicios.Entidades.Sesion sesion = new CedServicios.Entidades.Sesion();
+            CedServicios.Entidades.Respuesta respuesta; 
+            CedServicios.Entidades.Sesion sesion;
             sesion = ObtenerSesion();
             CedServicios.Entidades.Usuario usuario = new CedServicios.Entidades.Usuario();
             usuario.Id = id;
             usuario.Password = password;
-            CedServicios.RN.Usuario.Login(usuario, sesion);
+            respuesta = CedServicios.RN.Usuario.Login(usuario, sesion);
 
-            yield return usuario;
+            yield return respuesta;
         }
 
         // GET: api/Usuario/5

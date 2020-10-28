@@ -8,6 +8,7 @@ namespace CedServicios.Entidades
     {
         public Resultado Resultado { get; set; }
         public List<Resultado> Detalle { get; set; }
+        public Object Entidad { get; set; }
 
         public Respuesta()
         {
