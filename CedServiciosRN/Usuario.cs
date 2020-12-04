@@ -261,7 +261,7 @@ namespace CedServicios.RN
             DB.Usuario usuario = new DB.Usuario(Sesion);
             return usuario.ListaSegunFiltros(IdUsuario, Nombre, Email, Estado);
         }
-        public static Entidades.UsuarioLista ListaPaging(int IndicePagina, string OrderBy, string IdUsuario, string Nombre, string Email, string Estado, string SessionID, Entidades.Sesion Sesion)
+        public static Entidades.UsuarioLista ListaPaging(int Pagina, string OrderBy, string IdUsuario, string Nombre, string Email, string Estado, string SessionID, Entidades.Sesion Sesion)
         {
             Entidades.UsuarioLista usuarioLista = new Entidades.UsuarioLista();
             List<Entidades.Usuario> listaUsuario = new List<Entidades.Usuario>();
@@ -274,8 +274,8 @@ namespace CedServicios.RN
             usuarioLista.CantidadFilas = listaUsuario.Count;
             usuarioLista.CantidadFilasXPagina = Sesion.Usuario.CantidadFilasXPagina;
             usuarioLista.OrderBy = OrderBy;
-            usuarioLista.Pagina = IndicePagina;
-            usuarioLista.Usuarios = db.ListaPaging(IndicePagina, OrderBy, SessionID, listaUsuario);
+            usuarioLista.Pagina = Pagina;
+            usuarioLista.Usuarios = db.ListaPaging(Pagina, OrderBy, SessionID, listaUsuario);
             return usuarioLista;
         }
 

@@ -144,6 +144,7 @@ namespace CedServiciosApi
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "CedServicios APIs");
+                c.RoutePrefix = "swagger";
             });
         }
     }
