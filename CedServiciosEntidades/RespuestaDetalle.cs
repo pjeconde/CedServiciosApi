@@ -3,7 +3,7 @@ using System;
 namespace CedServicios.Entidades
 {
 	[Serializable]
-	public class Resultado
+	public class RespuestaDetalle
 	{
 		public enum SeveridadEnum
 		{
@@ -17,12 +17,12 @@ namespace CedServicios.Entidades
 		private string codigo = String.Empty;
 		private string descripcion = String.Empty;
 
-		public Resultado()
+		public RespuestaDetalle()
 		{
 			severidad = SeveridadEnum.Ok;
 		}
 
-		public Resultado(SeveridadEnum Severidad, string Codigo, string Descripcion)
+		public RespuestaDetalle(SeveridadEnum Severidad, string Codigo, string Descripcion)
 		{
 			severidad = Severidad;
 			codigo = Codigo;

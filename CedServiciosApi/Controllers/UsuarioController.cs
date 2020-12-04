@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
@@ -12,60 +13,132 @@ namespace CedServiciosApi.Controllers
         public UsuarioController(Models.ACContext context,IOptions<AppSettings> settings, IMemoryCache cache) : base(context,settings, cache)
         {
         }
-
-        [Route("Ingresar")]
+        
+        /// <summary>
+        /// Ingresar utilizando el Id. usuario y clave.
+        /// </summary>
+        /// <param name="id">Identificacion del usuario</param>
+        /// <param name="password">Clave de acceso</param>
+        /// <returns></returns>
         [HttpGet]
+        [Route("Ingresar")]
         public IEnumerable<CedServicios.Entidades.Respuesta> Ingresar(string id, string password)
         {
-            CedServicios.Entidades.Respuesta respuesta; 
-            CedServicios.Entidades.Sesion sesion;
-            sesion = ObtenerSesion();
-            CedServicios.Entidades.Usuario usuario = new CedServicios.Entidades.Usuario();
-            usuario.Id = id;
-            usuario.Password = password;
-            respuesta = CedServicios.RN.Usuario.Login(usuario, sesion);
-
+            CedServicios.Entidades.Respuesta respuesta = new CedServicios.Entidades.Respuesta();
+            try
+            {
+                CedServicios.Entidades.Sesion sesion;
+                sesion = ObtenerSesion();
+                CedServicios.Entidades.Usuario usuario = new CedServicios.Entidades.Usuario();
+                usuario.Id = id;
+                usuario.Password = password;
+                respuesta = CedServicios.RN.Usuario.Login(usuario, sesion);
+            }
+            catch (Exception ex)
+            {
+                CedServicios.RN.Respuesta.ExceptionToRespuesta(respuesta, ex);
+            }
             yield return respuesta;
         }
 
-        // GET: api/Usuario/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST: api/Usuario
+        /// <summary>
+        /// Ingresar utilizando el Id. usuario y clave.
+        /// </summary>
+        /// <param name="usuario">json de entidad usuario</param> 
         [HttpPost]
-        public void Post([FromBody] string value)
+        [Route("Registrar")]
+        public IEnumerable<CedServicios.Entidades.Respuesta> Registrar([FromBody] CedServicios.Entidades.Usuario usuario)
         {
+            CedServicios.Entidades.Respuesta respuesta = new CedServicios.Entidades.Respuesta();
+            try
+            {
+                CedServicios.Entidades.Sesion sesion;
+                sesion = ObtenerSesion();
+                respuesta = CedServicios.RN.Usuario.Registrar(usuario, sesion);
+            }
+            catch (Exception ex)
+            {
+                CedServicios.RN.Respuesta.ExceptionToRespuesta(respuesta, ex);
+            }
+            yield return respuesta;
         }
 
-        // PUT: api/Usuario/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        /// <summary>
+        /// Consultar los datos del usuario.
+        /// </summary>
+        /// <param name="id">Identificacion del usuario</param>
+        //[HttpGet("{id}", Name = "Leer")]
+        [HttpGet]
+        [Route("Leer")]
+        public IEnumerable<CedServicios.Entidades.Respuesta> Leer(string id)
         {
+            CedServicios.Entidades.Respuesta respuesta = new CedServicios.Entidades.Respuesta();
+            try
+            {
+                CedServicios.Entidades.Sesion sesion;
+                sesion = ObtenerSesion();
+                CedServicios.Entidades.Usuario usuario = new CedServicios.Entidades.Usuario();
+                usuario.Id = id;
+                CedServicios.RN.Usuario.Leer(usuario, sesion);
+                respuesta.Severidad = CedServicios.Entidades.RespuestaDetalle.SeveridadEnum.Ok;
+                respuesta.Objeto = usuario;
+            }
+            catch (Exception ex)
+            {
+                CedServicios.RN.Respuesta.ExceptionToRespuesta(respuesta, ex);
+            }
+            yield return respuesta;
         }
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        /// <summary>
+        /// Consultar si el Id. del usuario está disponible.
+        /// </summary>
+        /// <param name="id">Identificacion del usuario (nick)</param>
+        [HttpGet]
+        [Route("ConsultarIdDisponible")]
+        public IEnumerable<CedServicios.Entidades.Respuesta> ConsultarIdDisponible(string id)
         {
+            CedServicios.Entidades.Respuesta respuesta = new CedServicios.Entidades.Respuesta();
+            try
+            {
+                CedServicios.Entidades.Sesion sesion;
+                sesion = ObtenerSesion();
+                CedServicios.Entidades.Usuario usuario = new CedServicios.Entidades.Usuario();
+                usuario.Id = id;
+                CedServicios.RN.Usuario.IdCuentaDisponible(usuario, sesion);
+                respuesta.Severidad = CedServicios.Entidades.RespuestaDetalle.SeveridadEnum.Ok;
+                respuesta.Objeto = true;
+            }
+            catch (Exception ex)
+            {
+                CedServicios.RN.Respuesta.ExceptionToRespuesta(respuesta, ex);
+            }
+            yield return respuesta;
         }
-        
-        //public CedServicios.Entidades.Sesion CrearSesion()
-        //{
-        //    CedServicios.Entidades.Sesion s = new CedServicios.Entidades.Sesion();
-        //    s.CnnStr = Microsoft.Extensions.Configuration.GetConnectionString("DefaultConnection");
-        //    s.AdministradoresSiteEmail = Configuration.GetValue<string>("AppSettings:Mantenedores");
-        //    s.Ambiente = Configuration.GetValue<string>("AppSettings:Ambiente");
-        //    s.OpcionesHabilitadas = CedServicios.RN.Sesion.OpcionesHabilitadas(s);
-        //    s.Usuario = new Entidades.Usuario();
-        //    s.URLsite = HttpContext.Request.Host.Value.ToString();  //HttpContext.Request.Path.Value.ToString();
-        //    HttpContext.Session.Set("UsuarioId", System.Text.UTF8Encoding.UTF8.GetBytes(Environment.UserName));
-        //    HttpContext.Session.SetObj("Sesion", s);
-        //    return s;
-        //}   //    s.Opciones = CedServicios.RN.Sesion.Opciones(s);
-     
+        /// <summary>
+        /// Consultar una lista de usuarios.
+        /// </summary>
+        [HttpGet]
+        [Route("Lista")]
+        public IEnumerable<CedServicios.Entidades.Respuesta> Lista(int IndicePagina, string OrderBy, string IdUsuario, string Nombre, string Email, string Estado)
+        {
+            CedServicios.Entidades.Respuesta respuesta = new CedServicios.Entidades.Respuesta();
+            try
+            {
+                CedServicios.Entidades.Sesion sesion;
+                sesion = ObtenerSesion();
+                if (OrderBy == null) OrderBy = ""; if (IdUsuario == null) IdUsuario = ""; if (Nombre == null) Nombre = ""; if (Email == null) Email = ""; if (Estado == null) Estado = "";
+                CedServicios.Entidades.UsuarioLista usuarioLista = new CedServicios.Entidades.UsuarioLista();
+                usuarioLista = CedServicios.RN.Usuario.ListaPaging(IndicePagina, OrderBy, IdUsuario, Nombre, Email, Estado, IdUsuario+DateTime.Now.ToString("yyyyMMddhhmmss"), sesion);
+                respuesta.Severidad = CedServicios.Entidades.RespuestaDetalle.SeveridadEnum.Ok;
+                respuesta.Objeto = usuarioLista;
+            }
+            catch (Exception ex)
+            {
+                CedServicios.RN.Respuesta.ExceptionToRespuesta(respuesta, ex);
+            }
+            yield return respuesta;
+        }
+
     }
 }

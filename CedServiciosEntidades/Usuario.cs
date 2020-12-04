@@ -15,22 +15,22 @@ namespace CedServicios.Entidades
         private string email;
         private string pregunta;
         private string respuesta;
-        //private int cantidadEnviosMail;
-        //private DateTime fechaUltimoReenvioMail;
-        //private string emailSMS;
-        //private WF wF;
-        //private string ultActualiz;
+        private int cantidadEnviosMail;
+        private DateTime fechaUltimoReenvioMail;
+        private string emailSMS;
+        private WF wF;
+        private string ultActualiz;
         //private List<Permiso> permisos;
         //private string cuitPredef;
         //private int idUNPredef;
         //private string fechaOKeFactTyC;
-        //private int cantidadFilasXPagina = 10;
+        private int cantidadFilasXPagina = 10;
         //private bool mostrarAyudaComoPaginaDefault;
         //private string token;
 
         public Usuario()
         {
-            //wF = new WF();
+            wF = new WF();
             //permisos = new List<Permiso>();
         }
         public string Id
@@ -110,61 +110,61 @@ namespace CedServicios.Entidades
                 return respuesta;
             }
         }
-        //public int CantidadEnviosMail
-        //{
-        //    set
-        //    {
-        //        cantidadEnviosMail = value;
-        //    }
-        //    get
-        //    {
-        //        return cantidadEnviosMail;
-        //    }
-        //}
-        //public DateTime FechaUltimoReenvioMail
-        //{
-        //    set
-        //    {
-        //        fechaUltimoReenvioMail = value;
-        //    }
-        //    get
-        //    {
-        //        return fechaUltimoReenvioMail;
-        //    }
-        //}
-        //public string EmailSMS
-        //{
-        //    set
-        //    {
-        //        emailSMS = value;
-        //    }
-        //    get
-        //    {
-        //        return emailSMS;
-        //    }
-        //}
-        //public WF WF
-        //{
-        //    set
-        //    {
-        //        wF = value;
-        //    }
-        //    get
-        //    {
-        //        return wF;
-        //    }
-        //}
-        //public string UltActualiz
-        //{
-        //    set
-        //    {
-        //        ultActualiz = value;
-        //    }
-        //    get
-        //    {
-        //        return ultActualiz;
-        //    }
-        //}
+        public int CantidadEnviosMail
+        {
+            set
+            {
+                cantidadEnviosMail = value;
+            }
+            get
+            {
+                return cantidadEnviosMail;
+            }
+        }
+        public DateTime FechaUltimoReenvioMail
+        {
+            set
+            {
+                fechaUltimoReenvioMail = value;
+            }
+            get
+            {
+                return fechaUltimoReenvioMail;
+            }
+        }
+        public string EmailSMS
+        {
+            set
+            {
+                emailSMS = value;
+            }
+            get
+            {
+                return emailSMS;
+            }
+        }
+        public WF WF
+        {
+            set
+            {
+                wF = value;
+            }
+            get
+            {
+                return wF;
+            }
+        }
+        public string UltActualiz
+        {
+            set
+            {
+                ultActualiz = value;
+            }
+            get
+            {
+                return ultActualiz;
+            }
+        }
         //public List<Permiso> Permisos
         //{
         //    set
@@ -209,17 +209,17 @@ namespace CedServicios.Entidades
         //        return fechaOKeFactTyC;
         //    }
         //}
-        //public int CantidadFilasXPagina
-        //{
-        //    set
-        //    {
-        //        cantidadFilasXPagina = value;
-        //    }
-        //    get
-        //    {
-        //        return cantidadFilasXPagina;
-        //    }
-        //}
+        public int CantidadFilasXPagina
+        {
+            set
+            {
+                cantidadFilasXPagina = value;
+            }
+            get
+            {
+                return cantidadFilasXPagina;
+            }
+        }
         //public bool MostrarAyudaComoPaginaDefault
         //{
         //    set
@@ -250,7 +250,12 @@ namespace CedServicios.Entidades
         //    else
         //        return "~/Factura/Ayuda/Instructivas/OperarFacturaElectronica001";
         //}
-
-
+        public string Estado
+        {
+            get
+            {
+                return wF.Estado;
+            }
+        }
     }
 }

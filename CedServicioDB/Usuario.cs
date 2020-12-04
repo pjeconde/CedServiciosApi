@@ -42,7 +42,12 @@ namespace CedServicios.DB
             Hasta.Password = Convert.ToString(Desde["Password"]);
             Hasta.Pregunta = Convert.ToString(Desde["Pregunta"]);
             Hasta.Respuesta = Convert.ToString(Desde["Respuesta"]);
-
+            Hasta.CantidadEnviosMail = Convert.ToInt32(Desde["CantidadEnviosMail"]);
+            Hasta.FechaUltimoReenvioMail = Convert.ToDateTime(Desde["FechaUltimoReenvioMail"]);
+            Hasta.EmailSMS = Convert.ToString(Desde["EmailSMS"]);
+            Hasta.WF.Id = Convert.ToInt32(Desde["IdWF"]);
+            Hasta.WF.Estado = Convert.ToString(Desde["Estado"]);
+            Hasta.UltActualiz = ByteArray2TimeStamp((byte[])Desde["UltActualiz"]);
         }
         private void Copiar_ListaSegunFiltros(DataRow Desde, Entidades.Usuario Hasta)
         {
@@ -53,7 +58,12 @@ namespace CedServicios.DB
             Hasta.Password = Convert.ToString(Desde["Password"]);
             Hasta.Pregunta = Convert.ToString(Desde["Pregunta"]);
             Hasta.Respuesta = Convert.ToString(Desde["Respuesta"]);
-
+            Hasta.CantidadEnviosMail = Convert.ToInt32(Desde["CantidadEnviosMail"]);
+            Hasta.FechaUltimoReenvioMail = Convert.ToDateTime(Desde["FechaUltimoReenvioMail"]);
+            Hasta.EmailSMS = Convert.ToString(Desde["EmailSMS"]);
+            Hasta.WF.Id = Convert.ToInt32(Desde["IdWF"]);
+            Hasta.WF.Estado = Convert.ToString(Desde["Estado"]);
+            Hasta.UltActualiz = ByteArray2TimeStamp((byte[])Desde["UltActualiz"]);
         }
         private void Copiar_ListaPaging(DataRow Desde, Entidades.Usuario Hasta)
         {
@@ -64,30 +74,35 @@ namespace CedServicios.DB
             Hasta.Password = Convert.ToString(Desde["Password"]);
             Hasta.Pregunta = Convert.ToString(Desde["Pregunta"]);
             Hasta.Respuesta = Convert.ToString(Desde["Respuesta"]);
-
+            Hasta.CantidadEnviosMail = Convert.ToInt32(Desde["CantidadEnviosMail"]);
+            Hasta.FechaUltimoReenvioMail = Convert.ToDateTime(Desde["FechaUltimoReenvioMail"]);
+            Hasta.EmailSMS = Convert.ToString(Desde["EmailSMS"]);
+            Hasta.WF.Id = Convert.ToInt32(Desde["IdWF"]);
+            Hasta.WF.Estado = Convert.ToString(Desde["Estado"]);
+            Hasta.UltActualiz = Desde["UltActualiz"].ToString();
         }
-        //public void Crear(Entidades.UsuarioCrear Usuario)
-        //{
-        //    StringBuilder a = new StringBuilder(string.Empty);
-        //    a.AppendLine("declare @idWF varchar(256) ");
-        //    a.AppendLine("update Configuracion set @idWF=Valor=convert(varchar(256), convert(int, Valor)+1) where IdItemConfig='UltimoIdWF' ");
-        //    a.Append("Insert Usuario (IdUsuario, Nombre, Telefono, Email, Password, Pregunta, Respuesta, CantidadEnviosMail, FechaUltimoReenvioMail, EmailSMS, IdWF, Estado) values (");
-        //    a.Append("'" + Usuario.Id + "', ");
-        //    a.Append("'" + Usuario.Nombre + "', ");
-        //    a.Append("'" + Usuario.Telefono + "', ");
-        //    a.Append("'" + Usuario.Email + "', ");
-        //    a.Append("'" + Usuario.Password + "', ");
-        //    a.Append("'" + Usuario.Pregunta + "', ");
-        //    a.Append("'" + Usuario.Respuesta + "', ");
-        //    a.Append("1, ");            //CantidadEnviosMail
-        //    a.Append("getdate(), ");    //FechaUltimoReenvioMail
-        //    a.Append("'', ");           //EmailSMS
-        //    a.Append("@idWF, ");        //IdWF
-        //    a.Append("'" + Usuario.WF.Estado + "' ");
-        //    a.AppendLine(") ");
-        //    a.Append("insert Log values (@idWF, getdate(), '" + Usuario.Id + "', 'Usuario', 'Alta', 'PteConf', '') ");
-        //    Ejecutar(a.ToString(), TipoRetorno.None, Transaccion.NoAcepta, sesion.CnnStr);
-        //}
+        public void Crear(Entidades.Usuario Usuario)
+        {
+            StringBuilder a = new StringBuilder(string.Empty);
+            a.AppendLine("declare @idWF varchar(256) ");
+            a.AppendLine("update Configuracion set @idWF=Valor=convert(varchar(256), convert(int, Valor)+1) where IdItemConfig='UltimoIdWF' ");
+            a.Append("Insert Usuario (IdUsuario, Nombre, Telefono, Email, Password, Pregunta, Respuesta, CantidadEnviosMail, FechaUltimoReenvioMail, EmailSMS, IdWF, Estado) values (");
+            a.Append("'" + Usuario.Id + "', ");
+            a.Append("'" + Usuario.Nombre + "', ");
+            a.Append("'" + Usuario.Telefono + "', ");
+            a.Append("'" + Usuario.Email + "', ");
+            a.Append("'" + Usuario.Password + "', ");
+            a.Append("'" + Usuario.Pregunta + "', ");
+            a.Append("'" + Usuario.Respuesta + "', ");
+            a.Append("1, ");            //CantidadEnviosMail
+            a.Append("getdate(), ");    //FechaUltimoReenvioMail
+            a.Append("'', ");           //EmailSMS
+            a.Append("@idWF, ");        //IdWF
+            a.Append("'" + Usuario.WF.Estado + "' ");
+            a.AppendLine(") ");
+            a.Append("insert Log values (@idWF, getdate(), '" + Usuario.Id + "', 'Usuario', 'Alta', 'PteConf', '') ");
+            Ejecutar(a.ToString(), TipoRetorno.None, Transaccion.NoAcepta, sesion.CnnStr);
+        }
         public void Confirmar(Entidades.Usuario Usuario)
         {
             StringBuilder a = new StringBuilder(string.Empty);
@@ -144,7 +159,12 @@ namespace CedServicios.DB
             Hasta.Password = Convert.ToString(Desde["Password"]);
             Hasta.Pregunta = Convert.ToString(Desde["Pregunta"]);
             Hasta.Respuesta = Convert.ToString(Desde["Respuesta"]);
-
+            Hasta.CantidadEnviosMail = Convert.ToInt32(Desde["CantidadEnviosMail"]);
+            Hasta.FechaUltimoReenvioMail = Convert.ToDateTime(Desde["FechaUltimoReenvioMail"]);
+            Hasta.EmailSMS = Convert.ToString(Desde["EmailSMS"]);
+            Hasta.WF.Id = Convert.ToInt32(Desde["IdWF"]);
+            Hasta.WF.Estado = Convert.ToString(Desde["Estado"]);
+            Hasta.UltActualiz = ByteArray2TimeStamp((byte[])Desde["UltActualiz"]);
         }
         public int CantidadDeFilas()
         {
@@ -191,6 +211,12 @@ namespace CedServicios.DB
             Hasta.Password = Convert.ToString(Desde["Password"]);
             Hasta.Pregunta = Convert.ToString(Desde["Pregunta"]);
             Hasta.Respuesta = Convert.ToString(Desde["Respuesta"]);
+            Hasta.CantidadEnviosMail = Convert.ToInt32(Desde["CantidadEnviosMail"]);
+            Hasta.FechaUltimoReenvioMail = Convert.ToDateTime(Desde["FechaUltimoReenvioMail"]);
+            Hasta.EmailSMS = Convert.ToString(Desde["EmailSMS"]);
+            Hasta.WF.Id = Convert.ToInt32(Desde["IdWF"]);
+            Hasta.WF.Estado = Convert.ToString(Desde["Estado"]);
+            Hasta.UltActualiz = ByteArray2TimeStamp((byte[])Desde["UltActualiz"]);
         }
         public string ListaIdUsuariosParaSQLscript()
         {
@@ -281,7 +307,12 @@ namespace CedServicios.DB
                 a.Append(Usuario.Password + "', '");
                 a.Append(Usuario.Pregunta + "', '");
                 a.Append(Usuario.Respuesta + "', ");
-
+                a.Append(Usuario.CantidadEnviosMail + ", '");
+                a.Append(Usuario.FechaUltimoReenvioMail.ToString("yyyyMMdd") + "', '");
+                a.Append(Usuario.EmailSMS + "', ");
+                a.Append(Usuario.WF.Id + ", '");
+                a.Append(Usuario.Estado + "', '");
+                a.Append(Usuario.UltActualiz.ToString() + "') ");
             }
             a.Append("select * ");
             a.Append("from (select top {0} ROW_NUMBER() OVER (ORDER BY {1}) as ROW_NUM, ");
@@ -314,7 +345,7 @@ namespace CedServicios.DB
             {
                 OrderBy = "#Usuario" + SessionID + "." + OrderBy;
             }
-            string commandText = string.Format(a.ToString(), OrderBy);
+            string commandText = string.Format(a.ToString(), ((IndicePagina + 1) * sesion.Usuario.CantidadFilasXPagina), OrderBy, (IndicePagina * sesion.Usuario.CantidadFilasXPagina));
             DataTable dt = new DataTable();
             dt = (DataTable)Ejecutar(commandText.ToString(), TipoRetorno.TB, Transaccion.NoAcepta, sesion.CnnStr);
             List<Entidades.Usuario> lista = new List<Entidades.Usuario>();

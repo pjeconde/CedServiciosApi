@@ -1,8 +1,6 @@
 ﻿using CedServicios.Entidades;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace CedServicios.RN
 {
@@ -13,81 +11,156 @@ namespace CedServicios.RN
             CedServicios.DB.Usuario db = new  DB.Usuario(Sesion);
             db.Leer(Usuario);
         }
-        public static Respuesta Login(Entidades.Usuario Usuario, Entidades.Sesion Sesion)
+        public static Entidades.Respuesta Login(Entidades.Usuario Usuario, Entidades.Sesion Sesion)
         {
-            Respuesta respuesta = LoginValidator(Usuario);
+            Entidades.Respuesta respuesta = new Entidades.Respuesta();
             string passwordIngresada = Usuario.Password;
-            if (respuesta.Resultado.Severidad == Resultado.SeveridadEnum.Ok) { 
-                Leer(Usuario, Sesion);
-                respuesta.Entidad = Usuario;
-            }
-            return respuesta;
-
-                    //if (passwordIngresada != Usuario.Password)
-                    //{
-                    //    throw new CedServicios.EX.Usuario.LoginRechazadoXPasswordInvalida();
-                    //}
-                    ////Se impide el login a cuenta pendientes de confirmacion o dadas de baja
-                    ////(las cuentas "Prem" suspendidas se comportan como cuentas "Free")
-                    //if (Usuario.WF.Estado != "Vigente")
-                    //{
-                    //    throw new CedServicios.EX.Usuario.LoginRechazadoXEstadoCuenta();
-                    //}
-                
-            
-        }
-
-        public static Respuesta LoginValidator(Entidades.Usuario usuario)
-        {
-
-            Respuesta respuesta = new Respuesta();
-            Resultado resultado;
-
-
-            resultado = ValidarString(usuario.Id, (nameof(usuario.Id)).ToLower());
-            if (resultado.Severidad == Resultado.SeveridadEnum.Error)
-            {
-                respuesta.Detalle.Add(resultado);
-            }
-
-            resultado = ValidarString(usuario.Id, (nameof(usuario.Password)).ToLower());
-            if (resultado.Severidad == Resultado.SeveridadEnum.Error)
-            {
-                respuesta.Detalle.Add(resultado);
-            }
-   
-            if (respuesta.Detalle.Count > 0)
-            {
-                respuesta.Resultado.Severidad = Resultado.SeveridadEnum.Error;
-            }
-            return respuesta;
-        }
-
-        private static Resultado ValidarString(string dato, string nombreCampo)
-        {
-            Resultado resultado = new Resultado();
             try
             {
-                if (String.IsNullOrWhiteSpace(dato))
+                respuesta = LoginValidator(Usuario);
+                if (respuesta.Severidad == RespuestaDetalle.SeveridadEnum.Ok)
                 {
-                    resultado.Severidad = Resultado.SeveridadEnum.Error;
-                    resultado.Codigo = "01";
-                    resultado.Descripcion = "Debe ingresar el " + nombreCampo + " del usuario.";
-
+                    Leer(Usuario, Sesion);
+                    //Validar si coincide la clave.
+                    if (passwordIngresada != Usuario.Password)
+                    {
+                        throw new CedServicios.EX.Usuario.LoginRechazadoXPasswordInvalida();
+                    }
+                    //Impide el login a cuenta pendientes de confirmacion o dadas de baja.
+                    if (Usuario.WF.Estado != "Vigente")
+                    {
+                        throw new CedServicios.EX.Usuario.LoginRechazadoXEstadoCuenta();
+                    }
                 }
             }
             catch (Exception ex)
             {
-                resultado.Severidad = Resultado.SeveridadEnum.Error;
-                resultado.Codigo = "01";
-                resultado.Descripcion = ex.Message;
+                Respuesta.ExceptionToRespuesta(respuesta, ex);
+                
+                respuesta.Severidad = RespuestaDetalle.SeveridadEnum.Error;
+                RespuestaDetalle respuestaDetalle = new RespuestaDetalle();
+                respuestaDetalle.Severidad = RespuestaDetalle.SeveridadEnum.Error;
+                if (ex.GetType().FullName.StartsWith("CedServicios.EX.Validaciones"))
+                {
+                    respuestaDetalle.Codigo = "02";
+                }
+                else if (ex.GetType().FullName.StartsWith("CedServicios.EX.Usuario"))
+                {
+                    respuestaDetalle.Codigo = "01";
+                }
+                else
+                {
+                    respuestaDetalle.Codigo = "99";
+                }
+                respuestaDetalle.Descripcion = ex.Message.ToString();
+                respuesta.Detalle.Add(respuestaDetalle);
             }
-
-            return resultado;
-
+            return respuesta;
+        }
+        private static Entidades.Respuesta LoginValidator(Entidades.Usuario usuario)
+        {
+            Entidades.Respuesta respuesta = new Entidades.Respuesta();
+            Entidades.RespuestaDetalle respuestaDetalle;
+            respuestaDetalle = ValidarString(usuario.Id, (nameof(usuario.Id)).ToLower());
+            if (respuestaDetalle.Severidad == RespuestaDetalle.SeveridadEnum.Error)
+            {
+                respuesta.Detalle.Add(respuestaDetalle);
+            }
+            respuestaDetalle = ValidarString(usuario.Password, (nameof(usuario.Password)).ToLower());
+            if (respuestaDetalle.Severidad == RespuestaDetalle.SeveridadEnum.Error)
+            {
+                respuesta.Detalle.Add(respuestaDetalle);
+            }
+            if (respuesta.Detalle.Count > 0)
+            {
+                respuesta.Severidad = RespuestaDetalle.SeveridadEnum.Error;
+            }
+            return respuesta;
+        }
+        private static Entidades.Respuesta RegistrarValidator(Entidades.Usuario usuario)
+        {
+            Entidades.Respuesta respuesta = new Entidades.Respuesta();
+            Entidades.RespuestaDetalle respuestaDetalle;
+            respuesta = LoginValidator(usuario);
+            respuestaDetalle = ValidarString(usuario.Nombre, (nameof(usuario.Nombre)).ToLower());
+            if (respuestaDetalle.Severidad == RespuestaDetalle.SeveridadEnum.Error)
+            {
+                respuesta.Detalle.Add(respuestaDetalle);
+            }
+            respuestaDetalle = ValidarString(usuario.Pregunta, (nameof(usuario.Pregunta)).ToLower());
+            if (respuestaDetalle.Severidad == RespuestaDetalle.SeveridadEnum.Error)
+            {
+                respuesta.Detalle.Add(respuestaDetalle);
+            }
+            respuestaDetalle = ValidarString(usuario.Respuesta, (nameof(usuario.Respuesta)).ToLower());
+            if (respuestaDetalle.Severidad == RespuestaDetalle.SeveridadEnum.Error)
+            {
+                respuesta.Detalle.Add(respuestaDetalle);
+            }
+            if (respuesta.Detalle.Count > 0)
+            {
+                respuesta.Severidad = RespuestaDetalle.SeveridadEnum.Error;
+            }
+            return respuesta;
+        }
+        private static Entidades.RespuestaDetalle ValidarString(string dato, string nombreCampo)
+        {
+            RespuestaDetalle respuesta = new RespuestaDetalle();
+            try
+            {
+                if (String.IsNullOrWhiteSpace(dato))
+                {
+                    respuesta.Severidad = RespuestaDetalle.SeveridadEnum.Error;
+                    respuesta.Codigo = "01";
+                    respuesta.Descripcion = "Debe ingresar: " + nombreCampo + " del usuario.";
+                }
+            }
+            catch (Exception ex)
+            {
+                respuesta.Severidad = RespuestaDetalle.SeveridadEnum.Error;
+                respuesta.Codigo = "99";
+                respuesta.Descripcion = "ValidarString: " + ex.Message;
+            }
+            return respuesta;
+        }
+        public static Entidades.Respuesta Registrar(Entidades.Usuario Usuario, Entidades.Sesion Sesion)
+        {
+            Entidades.Respuesta respuesta = new Entidades.Respuesta();
+            try
+            {
+                respuesta = RegistrarValidator(Usuario);
+                if (respuesta.Severidad == RespuestaDetalle.SeveridadEnum.Ok)
+                {
+                    bool EnviarCorreo = true;
+                    Usuario.WF.Estado = "PteConf";
+                    DB.Usuario usuario = new DB.Usuario(Sesion);
+                    usuario.Crear(Usuario);
+                    if (EnviarCorreo) RN.EnvioCorreo.ConfirmacionAltaUsuario(Usuario, Sesion);
+                }
+            }
+            catch (Exception ex)
+            {
+                respuesta.Severidad = RespuestaDetalle.SeveridadEnum.Error;
+                RespuestaDetalle respuestaDetalle = new RespuestaDetalle();
+                respuestaDetalle.Severidad = RespuestaDetalle.SeveridadEnum.Error;
+                if (ex.GetType().FullName.StartsWith("CedServicios.EX.Validaciones"))
+                {
+                    respuestaDetalle.Codigo = "02";
+                }
+                else if (ex.GetType().FullName.StartsWith("CedServicios.EX.Usuario"))
+                {
+                    respuestaDetalle.Codigo = "01";
+                }
+                else
+                {
+                    respuestaDetalle.Codigo = "99";
+                }
+                respuestaDetalle.Descripcion = ex.Message.ToString();
+                respuesta.Detalle.Add(respuestaDetalle);
+            }
+            return respuesta;
         }
 
-  
         //public static void Registrar(Entidades.UsuarioCrear Usuario, bool EnviarCorreo, Entidades.Sesion Sesion)
         //{
         //    Usuario.WF.Estado = "PteConf";
@@ -188,8 +261,9 @@ namespace CedServicios.RN
             DB.Usuario usuario = new DB.Usuario(Sesion);
             return usuario.ListaSegunFiltros(IdUsuario, Nombre, Email, Estado);
         }
-        public static List<Entidades.Usuario> ListaPaging(out int CantidadFilas, int IndicePagina, string OrderBy, string IdUsuario, string Nombre, string Email, string Estado, string SessionID, Entidades.Sesion Sesion)
+        public static Entidades.UsuarioLista ListaPaging(int IndicePagina, string OrderBy, string IdUsuario, string Nombre, string Email, string Estado, string SessionID, Entidades.Sesion Sesion)
         {
+            Entidades.UsuarioLista usuarioLista = new Entidades.UsuarioLista();
             List<Entidades.Usuario> listaUsuario = new List<Entidades.Usuario>();
             DB.Usuario db = new DB.Usuario(Sesion);
             if (OrderBy.Equals(String.Empty))
@@ -197,9 +271,13 @@ namespace CedServicios.RN
                 OrderBy = "IdUsuario desc";
             }
             listaUsuario = db.ListaSegunFiltros(IdUsuario, Nombre, Email, Estado);
-            int cantidadFilas = listaUsuario.Count;
-            CantidadFilas = cantidadFilas;
-            return db.ListaPaging(IndicePagina, OrderBy, SessionID, listaUsuario);
+            usuarioLista.CantidadFilas = listaUsuario.Count;
+            usuarioLista.CantidadFilasXPagina = Sesion.Usuario.CantidadFilasXPagina;
+            usuarioLista.OrderBy = OrderBy;
+            usuarioLista.Pagina = IndicePagina;
+            usuarioLista.Usuarios = db.ListaPaging(IndicePagina, OrderBy, SessionID, listaUsuario);
+            return usuarioLista;
         }
+
     }
 }

@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
+using System.IO;
 
 namespace CedServiciosApi
 {
@@ -72,6 +74,22 @@ namespace CedServiciosApi
                 //});
                 //services.AddAuthentication(IISDefaults.AuthenticationScheme);
                 //services.AddSingleton<IPathProvider, PathProvider>();
+                services.AddSwaggerGen(c =>
+                {
+                    c.SwaggerDoc("v1", new OpenApiInfo
+                    {
+                        Version = "v1",
+                        Title = "CedServicios APIs",
+                        Description = "CedServicios APIs .NET Core 3.1",
+                        TermsOfService = new Uri("http://www.cedeira.com.ar//"),
+                        Contact = new OpenApiContact() { Name = "Pablo Conde", Email = "pjeconde@yahoo.com.ar", Url = new Uri("http://www.cedeira.com.ar//") }
+                    });
+                });
+                var pathDocComentarios = Path.Combine(Directory.GetCurrentDirectory() + "\\CedServiciosApi.xml");
+                services.AddSwaggerGen(c =>
+                {
+                    c.IncludeXmlComments(pathDocComentarios);
+                });
             }
             catch (Exception ex)
             {
@@ -120,6 +138,12 @@ namespace CedServiciosApi
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "CedServicios APIs");
             });
         }
     }

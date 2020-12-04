@@ -9,7 +9,39 @@ namespace CedServicios.RN
 {
     public class EnvioCorreo
     {
-
+        public static void ConfirmacionAltaUsuario(Entidades.Usuario Usuario, Entidades.Sesion Sesion)
+        {
+            SmtpClient smtpClient = new SmtpClient("mail.cedeira.com.ar");
+            MailMessage mail = new MailMessage();
+            mail.From = new MailAddress("registrousuarios@cedeira.com.ar");
+            mail.To.Add(new MailAddress(Usuario.Email));
+            mail.Subject = "Ahora dispone de una nueva cuenta";
+            mail.IsBodyHtml = true;
+            StringBuilder a = new StringBuilder();
+            a.Append("Estimado/a <b>" + Usuario.Nombre.Trim() + "</b>:<br />");
+            a.Append("<br />");
+            a.Append("Gracias por crear su cuenta.<br />");
+            a.Append("<br />");
+            a.Append("Para confirmar el alta, haga clic en el enlace que aparece a continuación:<br />");
+            a.Append("<br />");
+            string link = Sesion.URLsite + "UsuarioConfirmacion.aspx?Id=" + RN.Funciones.Encriptar(Usuario.Id);
+            char c = (char)34;
+            a.Append("<a class=" + c + "link" + c + " href=" + c + link + c + ">" + link + "</a><br />");
+            a.Append("<br />");
+            a.Append("Si no puede acceder a la página, copie la URL y péguela en una ventana nueva del navegador.<br />");
+            a.Append("<br />");
+            a.Append("Si ha recibido este correo electrónico y no ha solicitado la creación de una cuenta, es probable que otro usuario haya introducido su dirección por error al intentar llevar a cabo este proceso. Si no ha solicitado la creación de una cuenta, no es necesario que realice ninguna acción, y puede ignorar este mensaje con total seguridad.<br />");
+            a.Append("<br />");
+            a.Append("Saludos.<br />");
+            a.Append("<br />");
+            a.Append("<b>Cedeira Software Factory</b><br />");
+            a.Append("<br />");
+            a.Append("<br />");
+            a.Append("Este es sólo un servicio de envío de mensajes. Las respuestas no se supervisan ni se responden.<br />");
+            mail.Body = a.ToString();
+            smtpClient.Credentials = new NetworkCredential("registrousuarios@cedeira.com.ar", "cedeira123");
+            smtpClient.Send(mail);
+        }
         public static void ReporteIdUsuarios(string Email, Entidades.Sesion Sesion)
         {
             DB.Usuario db = new DB.Usuario(Sesion);
@@ -293,6 +325,7 @@ namespace CedServicios.RN
         //    smtpClient.Credentials = new NetworkCredential("registrousuarios@cedeira.com.ar", "cedeira123");
         //    smtpClient.Send(mail);
         //}
+
         //private static string TratamientoPalabrasReservadas(string Cuerpo, Entidades.Comprobante Comprobante, CedServicios.InterFacturas.lote_comprobantes Lote, string LogoPath, bool Negritas)
         //{
         //    string negritasDsd = "<b>";

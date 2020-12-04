@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CedServiciosApi</name>
+    </assembly>
+    <members>
+        <member name="M:CedServiciosApi.Controllers.UsuarioController.Ingresar(System.String,System.String)">
+            <summary>
+            Ingresar utilizando el Id. usuario y clave.
+            </summary>
+            <param name="id">Identificacion del usuario</param>
+            <param name="password">Clave de acceso</param>
+            <returns></returns>
+        </member>
+        <member name="M:CedServiciosApi.Controllers.UsuarioController.Registrar(CedServicios.Entidades.Usuario)">
+            <summary>
+            Ingresar utilizando el Id. usuario y clave.
+            </summary>
+            <param name="usuario">json de entidad usuario</param> 
+        </member>
+        <member name="M:CedServiciosApi.Controllers.UsuarioController.Leer(System.String)">
+            <summary>
+            Consultar los datos del usuario.
+            </summary>
+            <param name="id">Identificacion del usuario</param>
+        </member>
+        <member name="M:CedServiciosApi.Controllers.UsuarioController.ConsultarIdDisponible(System.String)">
+            <summary>
+            Consultar si el Id. del usuario está disponible.
+            </summary>
+            <param name="id">Identificacion del usuario (nick)</param>
+        </member>
+        <member name="M:CedServiciosApi.Controllers.UsuarioController.Lista(System.Int32,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Consultar una lista de usuarios.
+            </summary>
+        </member>
+        <member name="M:CedServiciosApi.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+             <summary>
+            
+             </summary>
+             <param name="services"></param>
+        </member>
+    </members>
+</doc>
