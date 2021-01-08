@@ -4,6 +4,19 @@
         <name>CedServiciosApi</name>
     </assembly>
     <members>
+        <member name="M:CedServiciosApi.Controllers.ComprobanteController.Leer(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Consultar el comprobante.
+            </summary>
+            <param name="tipoComprobante">Tipo de Comprobante</param>
+            <param name="nroPuntoVta">Número de Punto de Venta</param>
+            <param name="nroComprobante">Número de Comprobante</param>
+        </member>
+        <member name="M:CedServiciosApi.Controllers.ComprobanteController.Lista(CedServicios.Entidades.ComprobanteListaRequest)">
+            <summary>
+            Consultar una lista de comprobantes.
+            </summary>
+        </member>
         <member name="M:CedServiciosApi.Controllers.UsuarioController.Ingresar(System.String,System.String)">
             <summary>
             Ingresar utilizando el Id. usuario y clave.

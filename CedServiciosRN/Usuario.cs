@@ -261,8 +261,12 @@ namespace CedServicios.RN
             DB.Usuario usuario = new DB.Usuario(Sesion);
             return usuario.ListaSegunFiltros(IdUsuario, Nombre, Email, Estado);
         }
-        public static Entidades.UsuarioLista ListaPaging(int Pagina, string OrderBy, string IdUsuario, string Nombre, string Email, string Estado, string SessionID, Entidades.Sesion Sesion)
+        public static Entidades.UsuarioLista ListaPaging(int Pagina, string OrderBy, string IdUsuario, string Nombre, string Email, string Estado, Entidades.Sesion Sesion)
         {
+            if (Pagina <= 0)
+            {
+                throw new CedServicios.EX.Validaciones.ValorNoInfo("Pagina");
+            }
             Entidades.UsuarioLista usuarioLista = new Entidades.UsuarioLista();
             List<Entidades.Usuario> listaUsuario = new List<Entidades.Usuario>();
             DB.Usuario db = new DB.Usuario(Sesion);
@@ -271,11 +275,11 @@ namespace CedServicios.RN
                 OrderBy = "IdUsuario desc";
             }
             listaUsuario = db.ListaSegunFiltros(IdUsuario, Nombre, Email, Estado);
-            usuarioLista.CantidadFilas = listaUsuario.Count;
-            usuarioLista.CantidadFilasXPagina = Sesion.Usuario.CantidadFilasXPagina;
+            usuarioLista.CantidadRegistros  = listaUsuario.Count;
+            usuarioLista.CantidadRegistrosXPagina = Sesion.Usuario.CantidadFilasXPagina;
             usuarioLista.OrderBy = OrderBy;
             usuarioLista.Pagina = Pagina;
-            usuarioLista.Usuarios = db.ListaPaging(Pagina, OrderBy, SessionID, listaUsuario);
+            usuarioLista.Usuarios = db.ListaPaging(Pagina, OrderBy, Sesion.Usuario.Id + DateTime.Now.ToString("yyyyMMddhhmmss"), listaUsuario);
             return usuarioLista;
         }
 

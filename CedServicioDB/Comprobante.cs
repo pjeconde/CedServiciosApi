@@ -994,6 +994,7 @@ namespace CedServicios.DB
         }
         public List<Entidades.Comprobante> ListaPaging(int IndicePagina, string OrderBy, string SessionID, List<Entidades.Comprobante> ComprobanteLista)
         {
+
             System.Text.StringBuilder a = new StringBuilder();
             a.Append("CREATE TABLE #Comprobante" + SessionID + "( ");
             a.Append("[Cuit] [varchar](11) NOT NULL, ");

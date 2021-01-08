@@ -553,6 +553,23 @@ namespace CedServicios.EX
             }
         }
         [Serializable]
+        public class InformacionNoEncontrada : CedServicios.EX.BaseApplicationException
+        {
+            private static string TextoError = "Información no encontrada";
+            public InformacionNoEncontrada() : base(TextoError)
+            {
+            }
+            public InformacionNoEncontrada(string DescrAdic) : base(TextoError + ". " + DescrAdic)
+            {
+            }
+            public InformacionNoEncontrada(Exception inner) : base(TextoError, inner)
+            {
+            }
+            public InformacionNoEncontrada(SerializationInfo info, StreamingContext context) : base(info, context)
+            {
+            }
+        }
+        [Serializable]
         public class AjustePrecision : CedServicios.EX.BaseApplicationException
         {
             static string TextoError = "No se puede ajustar ";

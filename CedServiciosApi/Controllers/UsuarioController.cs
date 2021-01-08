@@ -120,7 +120,7 @@ namespace CedServiciosApi.Controllers
         /// </summary>
         [HttpGet]
         [Route("Lista")]
-        public IEnumerable<CedServicios.Entidades.Respuesta> Lista(int IndicePagina, string OrderBy, string IdUsuario, string Nombre, string Email, string Estado)
+        public IEnumerable<CedServicios.Entidades.Respuesta> Lista(int Pagina, string OrderBy, string IdUsuario, string Nombre, string Email, string Estado)
         {
             CedServicios.Entidades.Respuesta respuesta = new CedServicios.Entidades.Respuesta();
             try
@@ -129,7 +129,7 @@ namespace CedServiciosApi.Controllers
                 sesion = ObtenerSesion();
                 if (OrderBy == null) OrderBy = ""; if (IdUsuario == null) IdUsuario = ""; if (Nombre == null) Nombre = ""; if (Email == null) Email = ""; if (Estado == null) Estado = "";
                 CedServicios.Entidades.UsuarioLista usuarioLista = new CedServicios.Entidades.UsuarioLista();
-                usuarioLista = CedServicios.RN.Usuario.ListaPaging(IndicePagina, OrderBy, IdUsuario, Nombre, Email, Estado, IdUsuario+DateTime.Now.ToString("yyyyMMddhhmmss"), sesion);
+                usuarioLista = CedServicios.RN.Usuario.ListaPaging(Pagina, OrderBy, IdUsuario, Nombre, Email, Estado, sesion);
                 respuesta.Severidad = CedServicios.Entidades.RespuestaDetalle.SeveridadEnum.Ok;
                 respuesta.Objeto = usuarioLista;
             }

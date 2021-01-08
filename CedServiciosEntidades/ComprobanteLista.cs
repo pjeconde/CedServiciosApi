@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 
+
 namespace CedServicios.Entidades
 {
     [Serializable]
-    public class UsuarioLista
+    public class ComprobanteLista
     {
         private int pagina;
         private int cantidadRegistros;
         private int cantidadRegistrosXPagina;
         private string orderBy;
-        private List<Usuario> usuarios;
+        private List<Comprobante> comprobantes;
 
-        public UsuarioLista()
+        public ComprobanteLista()
         {
-            usuarios = new List<Usuario>();
+            comprobantes = new List<Comprobante>();
         }
 
         public int Pagina
@@ -41,7 +42,7 @@ namespace CedServicios.Entidades
                     return crint;
                 }
                 else
-                { 
+                {
                     return 0;
                 }
             }
@@ -79,15 +80,15 @@ namespace CedServicios.Entidades
                 return orderBy;
             }
         }
-        public List<Usuario> Usuarios
+        public List<Comprobante> Comprobantes
         {
             set
             {
-                usuarios = value;
+                comprobantes = value;
             }
             get
             {
-                return usuarios;
+                return comprobantes;
             }
         }
     }
