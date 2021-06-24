@@ -30,7 +30,7 @@ namespace CedServicios.EX
         [Serializable]
         public class PasswordYConfirmacionNoCoincidente : CedServicios.EX.BaseApplicationException
         {
-            static string TextoError = "La Contraseña no coincide con su Confirmación";
+            static string TextoError = "La Contraseña nueva no coincide con su confirmación";
             public PasswordYConfirmacionNoCoincidente()
                 : base(TextoError)
             {
@@ -108,6 +108,40 @@ namespace CedServicios.EX
             {
             }
             public ErrorDeConfirmacion(SerializationInfo info, StreamingContext context)
+                : base(info, context)
+            {
+            }
+        }
+        [Serializable]
+        public class EmailInvalido: CedServicios.EX.BaseApplicationException
+        {
+            static string TextoError = "Email inválido.";
+            public EmailInvalido()
+                : base(TextoError)
+            {
+            }
+            public EmailInvalido(Exception inner)
+                : base(TextoError, inner)
+            {
+            }
+            public EmailInvalido(SerializationInfo info, StreamingContext context)
+                : base(info, context)
+            {
+            }
+        }
+        [Serializable]
+        public class CuentaEstadoNoVigente: CedServicios.EX.BaseApplicationException
+        {
+            static string TextoError = "La cuenta actualmente no está vigente, no podrá realizar ningúna operación.";
+            public CuentaEstadoNoVigente()
+                : base(TextoError)
+            {
+            }
+            public CuentaEstadoNoVigente(Exception inner)
+                : base(TextoError, inner)
+            {
+            }
+            public CuentaEstadoNoVigente(SerializationInfo info, StreamingContext context)
                 : base(info, context)
             {
             }

@@ -11,6 +11,14 @@ namespace CedServicios.Entidades
         private string id;
         private string descr;
 
+        public NaturalezaComprobante()
+        {
+        }
+        public NaturalezaComprobante(string Id, string Descr)
+        {
+            id = Id;
+            descr = Descr;
+        }
         public string Id
         {
             set
@@ -32,6 +40,14 @@ namespace CedServicios.Entidades
             {
                 return descr;
             }
+        }
+        public static List<NaturalezaComprobante> Lista()
+        {
+            List<NaturalezaComprobante> lista = new List<NaturalezaComprobante>();
+            lista.Add(new NaturalezaComprobante("Venta", "Venta"));
+            lista.Add(new NaturalezaComprobante("Compra", "Compra"));
+            lista.Add(new NaturalezaComprobante("VentaTradic", "Venta Tradicional"));
+            return lista;
         }
     }
 }

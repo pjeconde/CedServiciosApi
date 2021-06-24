@@ -11,8 +11,9 @@ namespace CedServicios.DB
         {
         }
 
-        public void Leer(Entidades.Usuario Usuario)
+        public Entidades.Usuario Leer(string IdUsuario)
         {
+            Entidades.Usuario usuario = new Entidades.Usuario();
             StringBuilder a = new StringBuilder(string.Empty);
             a.Append("select Usuario.IdUsuario, Usuario.Nombre, Usuario.Telefono, Usuario.Email, Usuario.Password, Usuario.Pregunta, Usuario.Respuesta, Usuario.CantidadEnviosMail, Usuario.FechaUltimoReenvioMail, Usuario.EmailSMS, Usuario.IdWF, Usuario.Estado, Usuario.UltActualiz, isnull(ConfigCUITUNpredef.Cuit, '') as CuitPredef, isnull(ConfigCUITUNpredef.IdUN, 0) as IdUNPredef, isnull(ConfigFechaOKeFactTyC.Valor, '00000000') as FechaOKeFactTyC, ");
             a.Append("isnull(ConfigCantidadFilasXPagina.Valor, '0') as CantidadFilasXPagina, ");
@@ -22,16 +23,17 @@ namespace CedServicios.DB
             a.Append("left outer join Configuracion ConfigFechaOKeFactTyC on Usuario.IdUsuario=ConfigFechaOKeFactTyC.IdUsuario and ConfigFechaOKeFactTyC.IdItemConfig='FechaOKeFactTyC' ");
             a.Append("left outer join Configuracion ConfigCantidadFilasXPagina on Usuario.IdUsuario=ConfigCantidadFilasXPagina.IdUsuario and ConfigCantidadFilasXPagina.IdItemConfig='CantidadFilasXPagina' ");
             a.Append("left outer join Configuracion ConfigMostrarAyudaComoPaginaDefault on Usuario.IdUsuario=ConfigMostrarAyudaComoPaginaDefault.IdUsuario and ConfigMostrarAyudaComoPaginaDefault.IdItemConfig='MostrarAyudaComoPaginaDefault' ");
-            a.Append("where Usuario.IdUsuario='" + Usuario.Id + "' ");
+            a.Append("where Usuario.IdUsuario='" + IdUsuario + "' ");
             DataTable dt = (DataTable)Ejecutar(a.ToString(), TipoRetorno.TB, Transaccion.NoAcepta, sesion.CnnStr);
             if (dt.Rows.Count == 0)
             {
-                throw new CedServicios.EX.Validaciones.ElementoInexistente("Usuario " + Usuario.Id);
+                throw new CedServicios.EX.Validaciones.ElementoInexistente("Usuario " + IdUsuario);
             }
             else
             {
-                Copiar_Leer(dt.Rows[0], Usuario);
+                Copiar_Leer(dt.Rows[0], usuario);
             }
+            return usuario;
         }
         private void Copiar_Leer(DataRow Desde, Entidades.Usuario Hasta)
         {
@@ -81,7 +83,7 @@ namespace CedServicios.DB
             Hasta.WF.Estado = Convert.ToString(Desde["Estado"]);
             Hasta.UltActualiz = Desde["UltActualiz"].ToString();
         }
-        public void Crear(Entidades.Usuario Usuario)
+        public void Crear(Entidades.UsuarioDatosBasicos Usuario)
         {
             StringBuilder a = new StringBuilder(string.Empty);
             a.AppendLine("declare @idWF varchar(256) ");
@@ -98,12 +100,12 @@ namespace CedServicios.DB
             a.Append("getdate(), ");    //FechaUltimoReenvioMail
             a.Append("'', ");           //EmailSMS
             a.Append("@idWF, ");        //IdWF
-            a.Append("'" + Usuario.WF.Estado + "' ");
+            a.Append("'PteConf' ");
             a.AppendLine(") ");
             a.Append("insert Log values (@idWF, getdate(), '" + Usuario.Id + "', 'Usuario', 'Alta', 'PteConf', '') ");
             Ejecutar(a.ToString(), TipoRetorno.None, Transaccion.NoAcepta, sesion.CnnStr);
         }
-        public void Confirmar(Entidades.Usuario Usuario)
+        public void Confirmar(Entidades.UsuarioDatosBasicos Usuario)
         {
             StringBuilder a = new StringBuilder(string.Empty);
             a.Append("declare @idWF varchar(256) ");
@@ -120,10 +122,10 @@ namespace CedServicios.DB
                 throw new EX.Usuario.ErrorDeConfirmacion();
             }
         }
-        public bool IdUsuarioDisponible(Entidades.Usuario Usuario)
+        public bool IdUsuarioDisponible(string IdUsuario)
         {
             StringBuilder a = new StringBuilder(string.Empty);
-            a.Append("IF EXISTS(select * from Usuario where IdUsuario='" + Usuario.Id + "') ");
+            a.Append("IF EXISTS(select * from Usuario where IdUsuario='" + IdUsuario + "') ");
             a.Append("  BEGIN ");
             a.Append("	select convert(bit, 0) as Disponible ");
             a.Append("  END ");
@@ -173,10 +175,10 @@ namespace CedServicios.DB
             dt = (DataTable)Ejecutar(commandText, TipoRetorno.TB, Transaccion.NoAcepta, sesion.CnnStr);
             return Convert.ToInt32(dt.Rows[0][0]);
         }
-        public void CambiarPassword(Entidades.Usuario Usuario, string PasswordNueva)
+        public void CambiarPassword(string IdUsuario, string ClaveNueva)
         {
             StringBuilder a = new StringBuilder(string.Empty);
-            a.Append("update Usuario set Password='" + PasswordNueva + "' where IdUsuario='" + Usuario.Id + "' ");
+            a.Append("update Usuario set Password='" + ClaveNueva + "' where IdUsuario='" + IdUsuario + "' ");
             Ejecutar(a.ToString(), TipoRetorno.None, Transaccion.NoAcepta, sesion.CnnStr);
         }
         public List<Entidades.Usuario> Lista(string Email)
@@ -253,99 +255,37 @@ namespace CedServicios.DB
             a.AppendLine("drop table #ElimLog ");
             Ejecutar(a.ToString(), TipoRetorno.None, Transaccion.NoAcepta, sesion.CnnStr);
         }
-        public List<Entidades.Usuario> ListaSegunFiltros(string IdUsuario, string Nombre, string Email, string Estado)
+        public int CantidadDeFilasParaLista(string IdUsuario, string Nombre, string Email, string Estado)
         {
             StringBuilder a = new StringBuilder(string.Empty);
-            a.AppendLine("select Usuario.IdUsuario, Usuario.Nombre, Usuario.Telefono, Usuario.Email, Usuario.Password, Usuario.Pregunta, Usuario.Respuesta, ");
-            a.Append("Usuario.CantidadEnviosMail, Usuario.FechaUltimoReenvioMail, Usuario.EmailSMS, Usuario.IdWF, Usuario.Estado, Usuario.UltActualiz ");
+            a.AppendLine("select COUNT(Usuario.IdUsuario) ");
             a.AppendLine("from Usuario where 1=1 ");
             if (IdUsuario != String.Empty) a.AppendLine("and IdUsuario like '%" + IdUsuario + "%' ");
             if (Nombre != String.Empty) a.AppendLine("and Nombre like '%" + Nombre + "%' ");
             if (Email != String.Empty) a.AppendLine("and Email like '%" + Email + "%' ");
             if (Estado != String.Empty) a.AppendLine("and Estado = '" + Estado + "' ");
-            DataTable dt = (DataTable)Ejecutar(a.ToString(), TipoRetorno.TB, Transaccion.NoAcepta, sesion.CnnStr);
-            List<Entidades.Usuario> lista = new List<Entidades.Usuario>();
-            if (dt.Rows.Count != 0)
-            {
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    Entidades.Usuario usuario = new Entidades.Usuario();
-                    Copiar_ListaSegunFiltros(dt.Rows[i], usuario);
-                    lista.Add(usuario);
-                }
-            }
-            return lista;
+
+            DataTable dt = new DataTable();
+            dt = (DataTable)Ejecutar(a.ToString(), TipoRetorno.TB, Transaccion.NoAcepta, sesion.CnnStr);
+            return Convert.ToInt32(dt.Rows[0][0]);
         }
-        public List<Entidades.Usuario> ListaPaging(int Pagina, string OrderBy, string SessionID, List<Entidades.Usuario> UsuarioLista)
+        public List<Entidades.Usuario> Lista(int Pagina, ref string OrderBy, string IdUsuario, string Nombre, string Email, string Estado)
         {
             System.Text.StringBuilder a = new StringBuilder();
-            a.Append("CREATE TABLE #Usuario" + SessionID + "( ");
-            a.Append("[IdUsuario] [varchar](50) NOT NULL, ");
-            a.Append("[Nombre] [varchar](50) NOT NULL, ");
-            a.Append("[Telefono] [varchar](50) NOT NULL, ");
-            a.Append("[Email] [varchar](128) NOT NULL, ");
-            a.Append("[Password] [varchar](50) NOT NULL, ");
-            a.Append("[Pregunta] [varchar](256) NOT NULL, ");
-            a.Append("[Respuesta] [varchar](256) NOT NULL, ");
-            a.Append("[CantidadEnviosMail] [int] NOT NULL, ");
-            a.Append("[FechaUltimoReenvioMail] [datetime] NOT NULL, ");
-            a.Append("[EmailSMS] [varchar](50) NOT NULL, ");
-            a.Append("[IdWF] [int] NOT NULL, ");
-            a.Append("[Estado] [varchar](15) NOT NULL, ");
-            a.Append("[UltActualiz] [varchar](18) NOT NULL, ");
-            a.Append("CONSTRAINT [PK_Usuario" + SessionID + "] PRIMARY KEY CLUSTERED ");
-            a.Append("( ");
-            a.Append("[IdUsuario] ASC ");
-            a.Append(")WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY] ");
-            a.Append(") ON [PRIMARY] ");
-            foreach (Entidades.Usuario Usuario in UsuarioLista)
-            {
-                a.Append("Insert #Usuario" + SessionID + " values ('" + Usuario.Id + "', '");
-                a.Append(Usuario.Nombre + "', '");
-                a.Append(Usuario.Telefono + "', '");
-                a.Append(Usuario.Email + "', '");
-                a.Append(Usuario.Password + "', '");
-                a.Append(Usuario.Pregunta + "', '");
-                a.Append(Usuario.Respuesta + "', ");
-                a.Append(Usuario.CantidadEnviosMail + ", '");
-                a.Append(Usuario.FechaUltimoReenvioMail.ToString("yyyyMMdd") + "', '");
-                a.Append(Usuario.EmailSMS + "', ");
-                a.Append(Usuario.WF.Id + ", '");
-                a.Append(Usuario.Estado + "', '");
-                a.Append(Usuario.UltActualiz.ToString() + "') ");
-            }
-            a.Append("select * ");
-            a.Append("from (select top {0} ROW_NUMBER() OVER (ORDER BY {1}) as ROW_NUM, ");
+            a.Append("SELECT * ");
+            a.Append("FROM (select TOP {0} ROW_NUMBER() OVER (ORDER BY {1}) as ROW_NUM, ");
             a.Append("IdUsuario, Nombre, Telefono, Email, Password, Pregunta, Respuesta, CantidadEnviosMail, FechaUltimoReenvioMail, EmailSMS, ");
             a.Append("IdWF, Estado, UltActualiz ");
-            a.Append("from #Usuario" + SessionID + " ");
+            a.Append("from Usuario Usuario where 1=1 ");
+            if (IdUsuario != String.Empty) a.AppendLine("and IdUsuario like '%" + IdUsuario + "%' ");
+            if (Nombre != String.Empty) a.AppendLine("and Nombre like '%" + Nombre + "%' ");
+            if (Email != String.Empty) a.AppendLine("and Email like '%" + Email + "%' ");
+            if (Estado != String.Empty) a.AppendLine("and Estado = '" + Estado + "' ");
             a.Append("ORDER BY ROW_NUM) innerSelect WHERE ROW_NUM > {2} ");
-            a.Append("DROP TABLE #Usuario" + SessionID);
-            if (OrderBy.Trim().ToUpper() == "ID" || OrderBy.Trim().ToUpper() == "ID DESC" || OrderBy.Trim().ToUpper() == "ID ASC")
-            {
-                OrderBy = "#Usuario" + SessionID + "." + OrderBy.Replace("Id", "IdUsuario");
-            }
-            if (OrderBy.Trim().ToUpper() == "NOMBRE" || OrderBy.Trim().ToUpper() == "NOMBRE DESC" || OrderBy.Trim().ToUpper() == "NOMBRE ASC")
-            {
-                OrderBy = "#Usuario" + SessionID + "." + OrderBy;
-            }
-            if (OrderBy.Trim().ToUpper() == "TELEFONO" || OrderBy.Trim().ToUpper() == "TELEFONO DESC" || OrderBy.Trim().ToUpper() == "TELEFONO ASC")
-            {
-                OrderBy = "#Usuario" + SessionID + "." + OrderBy;
-            }
-            if (OrderBy.Trim().ToUpper() == "EMAIL" || OrderBy.Trim().ToUpper() == "EMAIL DESC" || OrderBy.Trim().ToUpper() == "EMAIL ASC")
-            {
-                OrderBy = "#Usuario" + SessionID + "." + OrderBy;
-            }
-            if (OrderBy.Trim().ToUpper() == "FECHAULTIMOREENVIOMAIL" || OrderBy.Trim().ToUpper() == "FECHAULTIMOREENVIOMAIL DESC" || OrderBy.Trim().ToUpper() == "FECHAULTIMOREENVIOMAIL ASC")
-            {
-                OrderBy = "#Usuario" + SessionID + "." + OrderBy;
-            }
-            if (OrderBy.Trim().ToUpper() == "ESTADO" || OrderBy.Trim().ToUpper() == "ESTADO DESC" || OrderBy.Trim().ToUpper() == "ESTADO ASC")
-            {
-                OrderBy = "#Usuario" + SessionID + "." + OrderBy;
-            }
-            string commandText = string.Format(a.ToString(), ((Pagina) * sesion.Usuario.CantidadFilasXPagina), OrderBy, ((Pagina - 1) * sesion.Usuario.CantidadFilasXPagina));
+            string[] se = ModificarSortExpression(OrderBy);
+            OrderBy = se[1];
+            string commandText = string.Format(a.ToString(), ((Pagina) * sesion.Usuario.CantidadFilasXPagina), se[0], ((Pagina - 1) * sesion.Usuario.CantidadFilasXPagina));
+            //string commandText = string.Format(sb.ToString(), ((PageIndex + 1) * PageSize), ModificarSortExpression(SortExpression), (PageIndex * PageSize));
             DataTable dt = new DataTable();
             dt = (DataTable)Ejecutar(commandText.ToString(), TipoRetorno.TB, Transaccion.NoAcepta, sesion.CnnStr);
             List<Entidades.Usuario> lista = new List<Entidades.Usuario>();
@@ -359,6 +299,40 @@ namespace CedServicios.DB
                 }
             }
             return lista;
+        }
+        
+        private string[] ModificarSortExpression(string SortExpression)
+        {
+            string[] se = new string[2];
+            SortExpression = SortExpression.Trim().ToUpper();
+            se[1] = SortExpression;
+            switch (SortExpression)
+            {
+                case "ID":
+                case "ID DESC": 
+                case "ID ASC":
+                    se[0] = "Usuario." + SortExpression.Replace("ID", "IDUSUARIO");
+                    break;
+                case "NOMBRE":
+                case "NOMBRE DESC":
+                case "NOMBRE ASC":
+                case "TELEFONO":
+                case "TELEFONO DESC":
+                case "TELEFONO ASC":
+                case "EMAIL":
+                case "EMAIL DESC":
+                case "EMAIL ASC":
+                case "ESTADO":
+                case "ESTADO DESC":
+                case "ESTADO ASC":
+                    se[0] = "Usuario." + SortExpression;
+                    break;
+                default:
+                    se[0] = "Usuario.IdUsuario";
+                    se[1] = "ID";
+                    break;
+            }
+            return se;
         }
         public void RegistrarReenvioMail(Entidades.Usuario Usuario)
         {

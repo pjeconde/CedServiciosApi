@@ -6,18 +6,9 @@ using System.ComponentModel.DataAnnotations;
 namespace CedServicios.Entidades
 {
     [Serializable]
-    public class Usuario
+    public class Usuario : UsuarioDatosBasicos
     {
-        private string id;
-        private string password;
-        private string nombre;
-        private string telefono;
-        private string email;
-        private string pregunta;
-        private string respuesta;
-        private int cantidadEnviosMail;
-        private DateTime fechaUltimoReenvioMail;
-        private string emailSMS;
+        
         private WF wF;
         private string ultActualiz;
         //private List<Permiso> permisos;
@@ -26,122 +17,14 @@ namespace CedServicios.Entidades
         //private string fechaOKeFactTyC;
         private int cantidadFilasXPagina = 10;
         //private bool mostrarAyudaComoPaginaDefault;
+        private int cantidadEnviosMail;
+        private DateTime fechaUltimoReenvioMail;
         //private string token;
 
         public Usuario()
         {
             wF = new WF();
             //permisos = new List<Permiso>();
-        }
-        public string Id
-        {
-            set
-            {
-                id = value;
-            }
-            get
-            {
-                return id;
-            }
-        }
-        public string Password
-        {
-            set
-            {
-                password = value;
-            }
-            get
-            {
-                return password;
-            }
-        }
-        public string Nombre
-        {
-            set
-            {
-                nombre = value;
-            }
-            get
-            {
-                return nombre;
-            }
-        }
-        public string Telefono
-        {
-            set
-            {
-                telefono = value;
-            }
-            get
-            {
-                return telefono;
-            }
-        }
-        public string Email
-        {
-            set
-            {
-                email = value;
-            }
-            get
-            {
-                return email;
-            }
-        }
-        public string Pregunta
-        {
-            set
-            {
-                pregunta = value;
-            }
-            get
-            {
-                return pregunta;
-            }
-        }
-        public string Respuesta
-        {
-            set
-            {
-                respuesta = value;
-            }
-            get
-            {
-                return respuesta;
-            }
-        }
-        public int CantidadEnviosMail
-        {
-            set
-            {
-                cantidadEnviosMail = value;
-            }
-            get
-            {
-                return cantidadEnviosMail;
-            }
-        }
-        public DateTime FechaUltimoReenvioMail
-        {
-            set
-            {
-                fechaUltimoReenvioMail = value;
-            }
-            get
-            {
-                return fechaUltimoReenvioMail;
-            }
-        }
-        public string EmailSMS
-        {
-            set
-            {
-                emailSMS = value;
-            }
-            get
-            {
-                return emailSMS;
-            }
         }
         public WF WF
         {
@@ -231,6 +114,28 @@ namespace CedServicios.Entidades
         //        return mostrarAyudaComoPaginaDefault;
         //    }
         //}
+        public int CantidadEnviosMail
+        {
+            set
+            {
+                cantidadEnviosMail = value;
+            }
+            get
+            {
+                return cantidadEnviosMail;
+            }
+        }
+        public DateTime FechaUltimoReenvioMail
+        {
+            set
+            {
+                fechaUltimoReenvioMail = value;
+            }
+            get
+            {
+                return fechaUltimoReenvioMail;
+            }
+        }
         //public string Token
         //{
         //    set

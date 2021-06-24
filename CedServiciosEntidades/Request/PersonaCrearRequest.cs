@@ -3,20 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CedServicios.Entidades
+namespace CedServicios.Entidades.Request
 {
     [Serializable]
-    public class PersonaRequest
+    public class PersonaCrearRequest
     {
         private string cuit;
         private Documento documento;
         private string idPersona;
+        private int desambiguacionCuitPais;
         private string razonSocial;
         private Domicilio domicilio;
+        private Contacto contacto;
+        private DatosImpositivos datosImpositivos;
         private bool esCliente;
         private bool esProveedor;
 
-        public PersonaRequest()
+        public PersonaCrearRequest()
         {
             documento = new Documento();
             domicilio = new Domicilio();
@@ -75,6 +78,28 @@ namespace CedServicios.Entidades
             get
             {
                 return domicilio;
+            }
+        }
+        public Contacto Contacto
+        {
+            set
+            {
+                contacto = value;
+            }
+            get
+            {
+                return contacto;
+            }
+        }
+        public DatosImpositivos DatosImpositivos
+        {
+            set
+            {
+                datosImpositivos = value;
+            }
+            get
+            {
+                return datosImpositivos;
             }
         }
         public bool EsCliente

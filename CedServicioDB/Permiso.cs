@@ -274,9 +274,8 @@ namespace CedServicios.DB
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     Entidades.Usuario elem = new Entidades.Usuario();
-                    elem.Id = Convert.ToString(dt.Rows[i]["IdUsuario"]);
                     Usuario db = new Usuario(sesion);
-                    db.Leer(elem);
+                    elem = db.Leer(Convert.ToString(dt.Rows[i]["IdUsuario"]));
                     lista.Add(elem);
                 }
             }

@@ -7,25 +7,34 @@ namespace CedServicios.RN
 {
     public class Respuesta
     {
-        public static void ExceptionToRespuesta(CedServicios.Entidades.Respuesta respuesta, Exception ex)
+        public static CedServicios.Entidades.Respuesta ExceptionToRespuesta(Exception ex)
         {
-            respuesta.Severidad = CedServicios.Entidades.RespuestaDetalle.SeveridadEnum.Error;
-            CedServicios.Entidades.RespuestaDetalle respuestaDetalle = new CedServicios.Entidades.RespuestaDetalle();
-            respuestaDetalle.Severidad = CedServicios.Entidades.RespuestaDetalle.SeveridadEnum.Error;
-            if (ex.GetType().FullName.StartsWith("CedServicios.EX.Validaciones"))
+            CedServicios.Entidades.Respuesta respuesta = new CedServicios.Entidades.Respuesta();
+            respuesta.Resultado = new CedServicios.Entidades.Resultado(CedServicios.Entidades.Resultado.SeveridadEnum.Error, "", ex.Message.ToString());
+            respuesta.Detalle.Add(respuesta.Resultado);
+            return respuesta;
+        }
+
+        public static Entidades.Resultado ValidarRequeridoString(string dato, string nombreCampo)
+        {
+            Entidades.Resultado resultado = new Entidades.Resultado();
+            if (String.IsNullOrWhiteSpace(dato))
             {
-                respuestaDetalle.Codigo = "02";
+                resultado.Severidad = Entidades.Resultado.SeveridadEnum.Error;
+                resultado.Descripcion = "Debe ingresar: " + nombreCampo;
             }
-            else if (ex.GetType().FullName.StartsWith("CedServicios.EX.Usuario"))
-            {
-                respuestaDetalle.Codigo = "01";
+            return resultado;
+        }
+
+        public static Entidades.Resultado ValidarNumeric(string dato, string nombreCampo)
+        {
+            Entidades.Resultado resultado = new Entidades.Resultado();
+            if (!RN.Funciones.IsValidNumeric(dato))
+            { 
+                resultado.Severidad = Entidades.Resultado.SeveridadEnum.Error;
+                resultado.Descripcion = "Debe ingresar un dato numérico en: " + nombreCampo;
             }
-            else
-            {
-                respuestaDetalle.Codigo = "99";
-            }
-            respuestaDetalle.Descripcion = ex.Message.ToString();
-            respuesta.Detalle.Add(respuestaDetalle);
+            return resultado;
         }
     }
 }

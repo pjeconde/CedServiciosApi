@@ -16,14 +16,14 @@ namespace CedServicios.Entidades
         private Domicilio domicilio;
         private Contacto contacto;
         private DatosImpositivos datosImpositivos;
+        private bool esCliente;
+        private bool esProveedor;
         private DatosIdentificatorios datosIdentificatorios;
         private string emailAvisoVisualizacion;
         private string passwordAvisoVisualizacion;
         private WF wF;
         private string ultActualiz;
         private int orden;
-        private bool esCliente;
-        private bool esProveedor;
         private DatosEmailAvisoComprobantePersona datosEmailAvisoComprobantePersona;
         private string idListaPrecioVenta;
         private string idListaPrecioCompra;
@@ -127,6 +127,28 @@ namespace CedServicios.Entidades
                 return datosImpositivos;
             }
         }
+        public bool EsCliente
+        {
+            set
+            {
+                esCliente = value;
+            }
+            get
+            {
+                return esCliente;
+            }
+        }
+        public bool EsProveedor
+        {
+            set
+            {
+                esProveedor = value;
+            }
+            get
+            {
+                return esProveedor;
+            }
+        }
         public DatosIdentificatorios DatosIdentificatorios
         {
             set
@@ -202,28 +224,6 @@ namespace CedServicios.Entidades
             get
             {
                 return orden;
-            }
-        }
-        public bool EsCliente
-        {
-            set
-            {
-                esCliente = value;
-            }
-            get
-            {
-                return esCliente;
-            }
-        }
-        public bool EsProveedor
-        {
-            set
-            {
-                esProveedor = value;
-            }
-            get
-            {
-                return esProveedor;
             }
         }
         public string IdListaPrecioVenta

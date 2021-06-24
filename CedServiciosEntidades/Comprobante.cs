@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 namespace CedServicios.Entidades
 {
     [Serializable]
-    public class Comprobante : ICloneable
+    public class Comprobante //: ICloneable
     {
         private string cuit;
         //identificación comprobante
@@ -54,16 +54,16 @@ namespace CedServicios.Entidades
             minutas = new List<ComprobanteDetalle>();
         }
 
-        public object Clone()
-        {
-            return this.MemberwiseClone();
-        }
-        [Display(Name = "CUIT")]
-        [MaxLength(11, ErrorMessage = "La longitud debe ser de 11 caracteres.")]
-        [MinLength(11, ErrorMessage = "La longitud debe ser de 11 caracteres.")]
-        [RegularExpression("([0-9]+)", ErrorMessage = "Por favor ingrese solo un valor númerico.")]
-        [Required(ErrorMessage = "El ingreso del cuit es obligatorio.")]
-        [Key]
+        //public object Clone()
+        //{
+        //    return this.MemberwiseClone();
+        //}
+        //[Display(Name = "CUIT")]
+        //[MaxLength(11, ErrorMessage = "La longitud debe ser de 11 caracteres.")]
+        //[MinLength(11, ErrorMessage = "La longitud debe ser de 11 caracteres.")]
+        //[RegularExpression("([0-9]+)", ErrorMessage = "Por favor ingrese solo un valor númerico.")]
+        //[Required(ErrorMessage = "El ingreso del cuit es obligatorio.")]
+        //[Key]
         public string Cuit
         {
             set

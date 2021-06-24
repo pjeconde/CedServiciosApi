@@ -1,4 +1,5 @@
 using System;
+//using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -14,6 +15,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System.IO;
+//using Microsoft.AspNetCore.Authentication.JwtBearer;
+//using Microsoft.IdentityModel.Tokens;
 
 namespace CedServiciosApi
 {
@@ -60,9 +63,9 @@ namespace CedServiciosApi
                    cnnStr
                    ));
 
+                //services.AddAuthorization();
                 //System.Collections.Generic.List<CedAC.Entidades.RolSegurInf> listaRoles = db.ListaRoles();
                 //string grupoAD = listaRoles[0].GrupoAD;
-                //services.AddAuthorization();
                 //services.AddAuthorization(options =>
                 //{
                 //    options.AddPolicy("RequireWindowsGroupMembership", policy =>
@@ -74,6 +77,26 @@ namespace CedServiciosApi
                 //});
                 //services.AddAuthentication(IISDefaults.AuthenticationScheme);
                 //services.AddSingleton<IPathProvider, PathProvider>();
+
+                //JWT Validación centralizada.
+                //var key = Encoding.ASCII.GetBytes(Configuration.GetValue<string>("SecretKey"));
+                //services.AddAuthentication(x =>
+                //{
+                //    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                //    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                //}).AddJwtBearer(x =>
+                //{
+                //    x.RequireHttpsMetadata = false;
+                //    x.SaveToken = true;
+                //    x.TokenValidationParameters = new TokenValidationParameters
+                //    {
+                //        ValidateIssuerSigningKey = true,
+                //        IssuerSigningKey = new SymmetricSecurityKey(key),
+                //        ValidateIssuer = false,
+                //        ValidateAudience = false
+                //    };
+                //});
+
                 services.AddSwaggerGen(c =>
                 {
                     c.SwaggerDoc("v1", new OpenApiInfo

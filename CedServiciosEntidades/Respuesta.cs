@@ -6,12 +6,35 @@ namespace CedServicios.Entidades
     [Serializable]
     public class Respuesta
     {
-        public RespuestaDetalle.SeveridadEnum Severidad { get; set; }
-        public List<RespuestaDetalle> Detalle { get; set; }
-        public object Objeto { get; set; }
+        private Resultado resultado;
+        private List<Resultado> detalle;
+
         public Respuesta()
         {
-            Detalle = new List<RespuestaDetalle>();
+            resultado = new Resultado();
+            detalle = new List<Resultado>();
+        }
+        public Resultado Resultado
+        {
+            get
+            {
+                return resultado;
+            }
+            set
+            {
+                resultado = value;
+            }
+        }
+        public List<Resultado> Detalle
+        {
+            get
+            {
+                return detalle;
+            }
+            set
+            {
+                detalle = value;
+            }
         }
     }
 }

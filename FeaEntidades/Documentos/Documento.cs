@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FeaEntidades.Documentos
 {
-	public class Documento : IComparable
+	public class Documento /*: IComparable*/
 	{
 		private short codigo;
 		private string descr;
@@ -23,16 +23,16 @@ namespace FeaEntidades.Documentos
 
 		#region IComparable Members
 
-		public int CompareTo(object obj)
-		{
-			if (obj is Documento)
-			{
-				Documento dp2 = (Documento)obj;
-				return descr.CompareTo(dp2.descr);
-			}
-			else
-				throw new ArgumentException("Object no es un Documento.");
-		}
+		//public int CompareTo(object obj)
+		//{
+		//	if (obj is Documento)
+		//	{
+		//		Documento dp2 = (Documento)obj;
+		//		return descr.CompareTo(dp2.descr);
+		//	}
+		//	else
+		//		throw new ArgumentException("Object no es un Documento.");
+		//}
 
 		#endregion		
 		

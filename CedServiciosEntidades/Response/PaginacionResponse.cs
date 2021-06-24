@@ -1,25 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.ComponentModel.DataAnnotations;
 
-
-namespace CedServicios.Entidades
+namespace CedServicios.Entidades.Response
 {
     [Serializable]
-    public class ComprobanteLista
+    public class PaginacionResponse
     {
         private int pagina;
         private int cantidadRegistros;
         private int cantidadRegistrosXPagina;
         private string orderBy;
-        private List<Comprobante> comprobantes;
-
-        public ComprobanteLista()
-        {
-            comprobantes = new List<Comprobante>();
-        }
-
         public int Pagina
         {
             set
@@ -78,17 +69,6 @@ namespace CedServicios.Entidades
             get
             {
                 return orderBy;
-            }
-        }
-        public List<Comprobante> Comprobantes
-        {
-            set
-            {
-                comprobantes = value;
-            }
-            get
-            {
-                return comprobantes;
             }
         }
     }

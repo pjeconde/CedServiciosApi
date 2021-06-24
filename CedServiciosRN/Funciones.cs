@@ -77,6 +77,7 @@ namespace CedServicios.RN
             }
             return textoLimpio;
         }
+
         //}
         //public static string Encriptar(string text)
         //{
@@ -139,7 +140,7 @@ namespace CedServicios.RN
         //        }
         //    }
         //}
-        
+
         public static string HexToString(string Hex)
         {
             Hex = Hex.Replace("%", "");

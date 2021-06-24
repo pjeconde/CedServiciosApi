@@ -65,5 +65,19 @@ namespace FeaEntidades.CondicionesIVA
             lista.Add(new ClienteDelExterior());
             return lista;
         }
+
+		public static bool ValidarCondicionIvaListaInf(string valor)
+        {
+            bool resp = false;
+            CondicionIVA civa = ListaInf().Find(delegate (CondicionIVA d)
+            {
+                return valor == d.Codigo.ToString();
+            });
+            if (civa != null)
+            {
+                resp = true;
+            }
+            return resp;
+        }
     }
 }

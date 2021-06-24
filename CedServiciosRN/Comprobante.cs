@@ -21,11 +21,11 @@ namespace CedServicios.RN
             DB.Comprobante db = new DB.Comprobante(Sesion);
             return db.ListaFiltradaIvaVentas(Estados, FechaDesde, FechaHasta, Persona, NaturalezaComprobante, IncluirContratos, Detalle);
         }
-        public static List<Entidades.Comprobante> ListaFiltrada(List<Entidades.Estado> Estados, List<Entidades.Estado> EstadosCompras, List<FeaEntidades.TiposDeComprobantes.TipoComprobante> TiposComprobante, string OrderBy, string FechaDesde, string FechaHasta, Entidades.Persona Persona, Entidades.NaturalezaComprobante NaturalezaComprobante, string PuntoDeVenta, string NumeroDeComprobante, bool IncluirContratos, bool IncluirRequestResponse, string Detalle, Entidades.Sesion Sesion, bool Ajuste)
-        {
-            DB.Comprobante db = new DB.Comprobante(Sesion);
-            return db.ListaFiltrada(Estados, EstadosCompras, TiposComprobante, OrderBy, FechaDesde, FechaHasta, Persona, NaturalezaComprobante, PuntoDeVenta, NumeroDeComprobante, IncluirContratos, IncluirRequestResponse, Detalle, Ajuste);
-        }
+        //public static List<Entidades.Comprobante> ListaFiltrada(List<Entidades.Estado> Estados, List<Entidades.Estado> EstadosCompras, List<FeaEntidades.TiposDeComprobantes.TipoComprobante> TiposComprobante, string OrderBy, string FechaDesde, string FechaHasta, Entidades.Persona Persona, Entidades.NaturalezaComprobante NaturalezaComprobante, string PuntoDeVenta, string NumeroDeComprobante, bool IncluirContratos, bool IncluirRequestResponse, string Detalle, Entidades.Sesion Sesion, bool Ajuste)
+        //{
+        //    DB.Comprobante db = new DB.Comprobante(Sesion);
+        //    return db.ListaFiltrada(Estados, EstadosCompras, TiposComprobante, OrderBy, FechaDesde, FechaHasta, Persona, NaturalezaComprobante, PuntoDeVenta, NumeroDeComprobante, IncluirContratos, IncluirRequestResponse, Detalle, Ajuste);
+        //}
         public static void Registrar(FeaEntidades.Turismo.comprobante Comprobante, string Tratamiento, Entidades.Comprobante ComprobanteOrig, Object Response, string IdNaturalezaComprobante, string IdDestinoComprobante, string IdEstado, string PeriodicidadEmision, DateTime FechaProximaEmision, int CantidadComprobantesAEmitir, int CantidadComprobantesEmitidos, int CantidadDiasFechaVto, string Detalle, bool EmailAvisoComprobanteActivo, string IdDestinatarioFrecuente, string EmailAvisoComprobanteAsunto, string EmailAvisoComprobanteCuerpo, Entidades.Sesion Sesion)
         {
             //Generar comprobante a partir de Comprobante Turismo
@@ -724,10 +724,22 @@ namespace CedServicios.RN
             DB.Comprobante db = new DB.Comprobante(Sesion);
             db.ActualizarFechaProximaEmision(Comprobante);
         }
+        //API
+        public static Entidades.Comprobante Leer(string NaturalezaComprobante, string Cuit, int ComprobanteTipo, int NroPuntoVta, int ComprobanteNro, int DocumentoTipo, string DocumentoNro, Entidades.Sesion Sesion)
+        {
+            DB.Comprobante db = new DB.Comprobante(Sesion);
+            Entidades.Comprobante comprobante = db.Leer(NaturalezaComprobante, Cuit, ComprobanteTipo, NroPuntoVta, ComprobanteNro, DocumentoTipo, DocumentoNro);
+            if (comprobante == null)
+            {
+                throw new CedServicios.EX.Validaciones.ElementoInexistente("Comprobante de " + NaturalezaComprobante + " del Cuit:"+ Cuit + " Tipo:"+ ComprobanteTipo + " PuntoVta:" + NroPuntoVta + " Nro:" + ComprobanteNro);
+            }
+            return comprobante;
+        }
         public static void Leer(Entidades.Comprobante Comprobante, Entidades.Sesion Sesion)
         {
             DB.Comprobante db = new DB.Comprobante(Sesion);
             db.Leer(Comprobante);
+
         }
         public static string LeerEstado(Entidades.Comprobante Comprobante, Entidades.Sesion Sesion)
         {
@@ -2735,38 +2747,45 @@ namespace CedServicios.RN
             return listaOrderBy;
         }
 
-        //public static List<Entidades.Comprobante> ListaPaging(int Pagina, string OrderBy, List<Entidades.Estado> Estados, List<Entidades.Estado> EstadosCompra, List<FeaEntidades.TiposDeComprobantes.TipoComprobante> TiposComprobante, string FechaDsd, string FechaHst, Entidades.Persona Persona, Entidades.NaturalezaComprobante NaturalezaComprobante, string PuntoDeVenta, string NumeroDeComprobante, string Detalle, string SessionID, Entidades.Sesion Sesion)
-        public static List<Entidades.Comprobante> ListaPaging(CedServicios.Entidades.ComprobanteListaRequest ComprobanteListaRequest, Entidades.Sesion Sesion)
+        public static Entidades.Response.ComprobanteListaResponse Lista(Entidades.Request.ComprobanteListaRequest ComprobanteListaRequest, Entidades.Sesion Sesion)
         {
-            if (ComprobanteListaRequest.Pagina <= 0)
+            if (ComprobanteListaRequest.Paginacion.Pagina <= 0)
             {
                 throw new CedServicios.EX.Validaciones.ValorNoInfo("Pagina");
             }
-            List<Entidades.Comprobante> listaComprobantes = new List<Entidades.Comprobante>();
+
+            Entidades.Response.ComprobanteListaResponse comprobanteListaResponse = new Entidades.Response.ComprobanteListaResponse();
             DB.Comprobante db = new DB.Comprobante(Sesion);
-            if (ComprobanteListaRequest.OrderBy.Equals(String.Empty))
+            if (ComprobanteListaRequest.Paginacion.OrderBy.Equals(String.Empty))
             {
-                ComprobanteListaRequest.OrderBy = "Cuit desc, NroPuntoVta asc, IdTipoComprobante asc, NroComprobante asc ";
+                ComprobanteListaRequest.Paginacion.OrderBy = "TipoComp-PtoVta-NroComp";
             }
-            //listaComprobantes = db.ListaFiltrada(ComprobanteListaRequest.Estados, ComprobanteListaRequest.EstadosCompra, ComprobanteListaRequest.TiposComprobante, OrderBy, FechaDsd, FechaHst, Persona, NaturalezaComprobante, PuntoDeVenta, NumeroDeComprobante, false, false, Detalle, false);
-            //int cantidadFilas = listaPersona.Count;
-            //CantidadFilas = cantidadFilas;
-            if (listaComprobantes.Count <= 0)
+            int cantidadDeFilasParaLista = db.CantidadDeFilasParaLista(ComprobanteListaRequest);
+            if (cantidadDeFilasParaLista <= 0)
             {
-                throw new CedServicios.EX.Validaciones.InformacionNoEncontrada();
+                throw new CedServicios.EX.Validaciones.InformacionNoEncontrada("Lista de Usuarios");
             }
-            return db.ListaPaging(ComprobanteListaRequest.Pagina, ComprobanteListaRequest.OrderBy, Sesion.Usuario.Id + DateTime.Now.ToString("yyyyMMddhhmmss"), listaComprobantes);
+            //comprobanteListaResponse.Paginacion.CantidadRegistros = cantidadDeFilasParaLista;
+            //comprobanteListaResponse.Paginacion.CantidadRegistrosXPagina = Sesion.Usuario.CantidadFilasXPagina;
+            //comprobanteListaResponse.Paginacion.Pagina = ComprobanteListaRequest.Paginacion.Pagina;
+            //comprobanteListaResponse.Comprobantes = db.Lista(ComprobanteListaRequest);
+            //comprobanteListaResponse.Paginacion.OrderBy = ComprobanteListaRequest.Paginacion.OrderBy;
+            return comprobanteListaResponse;
         }
-        public static List<Entidades.Comprobante> ListaFiltradaPagging(out int CantidadFilas, int Pagina, string OrderBy, List<Entidades.Estado> Estados, List<Entidades.Estado> EstadosCompra, List<FeaEntidades.TiposDeComprobantes.TipoComprobante> TiposComprobante, string FechaDsd, string FechaHst, Entidades.Persona Persona, Entidades.NaturalezaComprobante NaturalezaComprobante, string PuntoDeVenta, string NumeroDeComprobante, string Detalle, Entidades.Sesion Sesion)
+        public static List<Entidades.TipoComprobante> TiposDeComprobante()
         {
-            List<Entidades.Comprobante> listaComprobante = new List<Entidades.Comprobante>();
-            DB.Comprobante db = new DB.Comprobante(Sesion);
-            if (OrderBy.Equals(String.Empty))
+            List<Entidades.TipoComprobante> lista = new List<Entidades.TipoComprobante>();
+            List<FeaEntidades.TiposDeComprobantes.TipoComprobante> listaFEA =  FeaEntidades.TiposDeComprobantes.TipoComprobante.ListaCompletaAFIP();
+            foreach (FeaEntidades.TiposDeComprobantes.TipoComprobante tcFEA in listaFEA)
             {
-                OrderBy = "TipoComp-PtoVta-NroComp";
+                lista.Add(new Entidades.TipoComprobante(tcFEA.Codigo, tcFEA.Descr));
             }
-            listaComprobante = db.ListaFiltradaPagging(out CantidadFilas, Estados, EstadosCompra, TiposComprobante, OrderBy, FechaDsd, FechaHst, Persona, NaturalezaComprobante, PuntoDeVenta, NumeroDeComprobante, false, false, Detalle, false, Pagina);
-            return listaComprobante;
+            return lista;
+        }
+        public static List<Entidades.NaturalezaComprobante> NaturalezaComprobanteLista()
+        {
+            List<Entidades.NaturalezaComprobante> lista = Entidades.NaturalezaComprobante.Lista();
+            return lista;
         }
     }
 }

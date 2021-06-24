@@ -11,6 +11,14 @@ namespace CedServicios.Entidades
         private int id;
         private string descr;
 
+        public TipoComprobante()
+        {
+        }
+        public TipoComprobante(int Id, string Descr)
+        {
+            id = Id;
+            descr = Descr;    
+        }
         public int Id
         {
             set
