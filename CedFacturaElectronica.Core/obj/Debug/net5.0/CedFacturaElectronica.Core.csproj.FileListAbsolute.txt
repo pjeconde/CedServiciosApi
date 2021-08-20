@@ -1,0 +1,15 @@
+C:\Users\chris\OneDrive\Desktop\CedeiraFacturaElectronica\CedFacturaElectronica.Api\CedFacturaElectronica.Core\bin\Debug\net5.0\CedFacturaElectronica.Core.deps.json
+C:\Users\chris\OneDrive\Desktop\CedeiraFacturaElectronica\CedFacturaElectronica.Api\CedFacturaElectronica.Core\bin\Debug\net5.0\CedFacturaElectronica.Core.runtimeconfig.json
+C:\Users\chris\OneDrive\Desktop\CedeiraFacturaElectronica\CedFacturaElectronica.Api\CedFacturaElectronica.Core\bin\Debug\net5.0\CedFacturaElectronica.Core.runtimeconfig.dev.json
+C:\Users\chris\OneDrive\Desktop\CedeiraFacturaElectronica\CedFacturaElectronica.Api\CedFacturaElectronica.Core\bin\Debug\net5.0\CedFacturaElectronica.Core.dll
+C:\Users\chris\OneDrive\Desktop\CedeiraFacturaElectronica\CedFacturaElectronica.Api\CedFacturaElectronica.Core\bin\Debug\net5.0\ref\CedFacturaElectronica.Core.dll
+C:\Users\chris\OneDrive\Desktop\CedeiraFacturaElectronica\CedFacturaElectronica.Api\CedFacturaElectronica.Core\bin\Debug\net5.0\CedFacturaElectronica.Core.pdb
+C:\Users\chris\OneDrive\Desktop\CedeiraFacturaElectronica\CedFacturaElectronica.Api\CedFacturaElectronica.Core\obj\Debug\net5.0\CedFacturaElectronica.Core.csproj.AssemblyReference.cache
+C:\Users\chris\OneDrive\Desktop\CedeiraFacturaElectronica\CedFacturaElectronica.Api\CedFacturaElectronica.Core\obj\Debug\net5.0\CedFacturaElectronica.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chris\OneDrive\Desktop\CedeiraFacturaElectronica\CedFacturaElectronica.Api\CedFacturaElectronica.Core\obj\Debug\net5.0\CedFacturaElectronica.Core.AssemblyInfoInputs.cache
+C:\Users\chris\OneDrive\Desktop\CedeiraFacturaElectronica\CedFacturaElectronica.Api\CedFacturaElectronica.Core\obj\Debug\net5.0\CedFacturaElectronica.Core.AssemblyInfo.cs
+C:\Users\chris\OneDrive\Desktop\CedeiraFacturaElectronica\CedFacturaElectronica.Api\CedFacturaElectronica.Core\obj\Debug\net5.0\CedFacturaElectronica.Core.csproj.CoreCompileInputs.cache
+C:\Users\chris\OneDrive\Desktop\CedeiraFacturaElectronica\CedFacturaElectronica.Api\CedFacturaElectronica.Core\obj\Debug\net5.0\CedFacturaElectronica.Core.dll
+C:\Users\chris\OneDrive\Desktop\CedeiraFacturaElectronica\CedFacturaElectronica.Api\CedFacturaElectronica.Core\obj\Debug\net5.0\ref\CedFacturaElectronica.Core.dll
+C:\Users\chris\OneDrive\Desktop\CedeiraFacturaElectronica\CedFacturaElectronica.Api\CedFacturaElectronica.Core\obj\Debug\net5.0\CedFacturaElectronica.Core.pdb
+C:\Users\chris\OneDrive\Desktop\CedeiraFacturaElectronica\CedFacturaElectronica.Api\CedFacturaElectronica.Core\obj\Debug\net5.0\CedFacturaElectronica.Core.genruntimeconfig.cache
