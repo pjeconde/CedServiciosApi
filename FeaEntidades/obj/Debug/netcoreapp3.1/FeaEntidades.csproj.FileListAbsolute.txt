@@ -1,0 +1,9 @@
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\FeaEntidades\bin\Debug\netcoreapp3.1\FeaEntidades.deps.json
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\FeaEntidades\bin\Debug\netcoreapp3.1\FeaEntidades.dll
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\FeaEntidades\bin\Debug\netcoreapp3.1\FeaEntidades.pdb
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\FeaEntidades\obj\Debug\netcoreapp3.1\FeaEntidades.csproj.AssemblyReference.cache
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\FeaEntidades\obj\Debug\netcoreapp3.1\FeaEntidades.AssemblyInfoInputs.cache
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\FeaEntidades\obj\Debug\netcoreapp3.1\FeaEntidades.AssemblyInfo.cs
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\FeaEntidades\obj\Debug\netcoreapp3.1\FeaEntidades.csproj.CoreCompileInputs.cache
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\FeaEntidades\obj\Debug\netcoreapp3.1\FeaEntidades.dll
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\FeaEntidades\obj\Debug\netcoreapp3.1\FeaEntidades.pdb

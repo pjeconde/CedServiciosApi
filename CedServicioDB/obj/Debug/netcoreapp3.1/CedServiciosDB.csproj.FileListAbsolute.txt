@@ -1,0 +1,16 @@
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\CedServicioDB\bin\Debug\netcoreapp3.1\CedServiciosDB.deps.json
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\CedServicioDB\bin\Debug\netcoreapp3.1\CedServiciosDB.dll
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\CedServicioDB\bin\Debug\netcoreapp3.1\CedServiciosDB.pdb
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\CedServicioDB\bin\Debug\netcoreapp3.1\CedServiciosEntidades.dll
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\CedServicioDB\bin\Debug\netcoreapp3.1\CedServiciosEX.dll
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\CedServicioDB\bin\Debug\netcoreapp3.1\FeaEntidades.dll
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\CedServicioDB\bin\Debug\netcoreapp3.1\CedServiciosEntidades.pdb
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\CedServicioDB\bin\Debug\netcoreapp3.1\CedServiciosEX.pdb
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\CedServicioDB\bin\Debug\netcoreapp3.1\FeaEntidades.pdb
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\CedServicioDB\obj\Debug\netcoreapp3.1\CedServiciosDB.csproj.AssemblyReference.cache
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\CedServicioDB\obj\Debug\netcoreapp3.1\CedServiciosDB.AssemblyInfoInputs.cache
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\CedServicioDB\obj\Debug\netcoreapp3.1\CedServiciosDB.AssemblyInfo.cs
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\CedServicioDB\obj\Debug\netcoreapp3.1\CedServiciosDB.csproj.CoreCompileInputs.cache
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\CedServicioDB\obj\Debug\netcoreapp3.1\CedServiciosDB.csproj.CopyComplete
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\CedServicioDB\obj\Debug\netcoreapp3.1\CedServiciosDB.dll
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\CedServicioDB\obj\Debug\netcoreapp3.1\CedServiciosDB.pdb

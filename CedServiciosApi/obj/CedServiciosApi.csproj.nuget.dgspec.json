@@ -1,0 +1,409 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosApi\\CedServiciosApi.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServicioDB\\CedServiciosDB.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServicioDB\\CedServiciosDB.csproj",
+        "projectName": "CedServiciosDB",
+        "projectPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServicioDB\\CedServiciosDB.csproj",
+        "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServicioDB\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosEntidades\\CedServiciosEntidades.csproj": {
+                "projectPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosEntidades\\CedServiciosEntidades.csproj"
+              },
+              "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosEX\\CedServiciosEX.csproj": {
+                "projectPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosEX\\CedServiciosEX.csproj"
+              },
+              "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\FeaEntidades\\FeaEntidades.csproj": {
+                "projectPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\FeaEntidades\\FeaEntidades.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.0-preview3.19551.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosApi\\CedServiciosApi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosApi\\CedServiciosApi.csproj",
+        "projectName": "CedServiciosApi",
+        "projectPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosApi\\CedServiciosApi.csproj",
+        "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosApi\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosEntidades\\CedServiciosEntidades.csproj": {
+                "projectPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosEntidades\\CedServiciosEntidades.csproj"
+              },
+              "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosEX\\CedServiciosEX.csproj": {
+                "projectPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosEX\\CedServiciosEX.csproj"
+              },
+              "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosRN\\CedServiciosRN.csproj": {
+                "projectPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosRN\\CedServiciosRN.csproj"
+              },
+              "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\FeaEntidades\\FeaEntidades.csproj": {
+                "projectPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\FeaEntidades\\FeaEntidades.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.1.16, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosEntidades\\CedServiciosEntidades.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosEntidades\\CedServiciosEntidades.csproj",
+        "projectName": "CedServiciosEntidades",
+        "projectPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosEntidades\\CedServiciosEntidades.csproj",
+        "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosEntidades\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\FeaEntidades\\FeaEntidades.csproj": {
+                "projectPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\FeaEntidades\\FeaEntidades.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosEX\\CedServiciosEX.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosEX\\CedServiciosEX.csproj",
+        "projectName": "CedServiciosEX",
+        "projectPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosEX\\CedServiciosEX.csproj",
+        "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosEX\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosRN\\CedServiciosRN.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosRN\\CedServiciosRN.csproj",
+        "projectName": "CedServiciosRN",
+        "projectPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosRN\\CedServiciosRN.csproj",
+        "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosRN\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServicioDB\\CedServiciosDB.csproj": {
+                "projectPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServicioDB\\CedServiciosDB.csproj"
+              },
+              "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosEntidades\\CedServiciosEntidades.csproj": {
+                "projectPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosEntidades\\CedServiciosEntidades.csproj"
+              },
+              "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosEX\\CedServiciosEX.csproj": {
+                "projectPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\CedServiciosEX\\CedServiciosEX.csproj"
+              },
+              "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\FeaEntidades\\FeaEntidades.csproj": {
+                "projectPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\FeaEntidades\\FeaEntidades.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\FeaEntidades\\FeaEntidades.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\FeaEntidades\\FeaEntidades.csproj",
+        "projectName": "FeaEntidades",
+        "projectPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\FeaEntidades\\FeaEntidades.csproj",
+        "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\FeaEntidades\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "FileHelpers": {
+              "target": "Package",
+              "version": "[3.4.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

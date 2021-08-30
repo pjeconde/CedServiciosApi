@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CedServiciosApi</name>
+    </assembly>
+    <members>
+        <member name="M:CedServiciosApi.Controllers.ComprobanteController.ListaPrueba(CedServicios.Entidades.Request.ComprobanteListaRequest)">
+            <summary>
+            Consultar una lista de comprobantes.
+            </summary>
+        </member>
+        <member name="M:CedServiciosApi.Controllers.ComprobanteController.TiposDeComprobante">
+            <summary>
+            Consultar una lista de tipos de comprobante.
+            </summary>
+        </member>
+        <member name="M:CedServiciosApi.Controllers.ComprobanteController.NaturalezaComprobanteLista">
+            <summary>
+            Consultar una lista de naturaleza de los comprobantes.
+            </summary>
+        </member>
+        <member name="M:CedServiciosApi.Controllers.PersonaController.CondicionIVALista">
+            <summary>
+            Consultar la lista de condición de IVA.
+            </summary>
+        </member>
+        <member name="M:CedServiciosApi.Controllers.PersonaController.CondicionIBLista">
+            <summary>
+            Consultar la lista de condición de Ingresos Brutos.
+            </summary>
+        </member>
+        <member name="M:CedServiciosApi.Controllers.PersonaController.TiposDeDocumentoLista">
+            <summary>
+            Consultar la lista de Tipos de Documento.
+            </summary>
+        </member>
+        <member name="M:CedServiciosApi.Controllers.PersonaController.ProvinciasLista">
+            <summary>
+            Consultar la lista de Provincias.
+            </summary>
+        </member>
+        <member name="M:CedServiciosApi.Controllers.UsuarioController.Ingresar(System.String,System.String)">
+            <summary>
+            Ingresar utilizando el Id. usuario y clave.
+            </summary>
+            <param name="IdUsuario">Identificacion del usuario</param>
+            <param name="Clave">Clave de acceso</param>
+            <returns></returns>
+        </member>
+        <member name="M:CedServiciosApi.Controllers.UsuarioController.Registrar(CedServicios.Entidades.UsuarioDatosBasicos)">
+            <summary>
+            Ingresar utilizando el Id. usuario y clave.
+            </summary>
+            <param name="Usuario">json de entidad UsuarioDatosBasicos</param> 
+        </member>
+        <member name="M:CedServiciosApi.Controllers.UsuarioController.Leer(System.String)">
+            <summary>
+            Consultar los datos del usuario.
+            </summary>
+            <param name="Id">Identificacion del usuario</param>
+        </member>
+        <member name="M:CedServiciosApi.Controllers.UsuarioController.ConsultarIdDisponible(System.String)">
+            <summary>
+            Consultar si el Id. del usuario está disponible.
+            </summary>
+            <param name="Id">Identificacion del usuario (nick)</param>
+        </member>
+        <member name="M:CedServiciosApi.Controllers.UsuarioController.CambiarClave(System.String,System.String,System.String,System.String)">
+            <summary>
+            Cambiar la clave actual.
+            </summary>
+            <param name="Id">Identificacion del usuario (nick)</param>
+            <param name="Clave">Clave actual</param>
+            <param name="ClaveNueva">Clave nueva</param>
+            <param name="ClaveNuevaConfirmacion">Confirmación de la Clave nueva</param>
+        </member>
+        <member name="M:CedServiciosApi.Controllers.UsuarioController.ConsultarIdUsuarioPorEmail(System.String)">
+            <summary>
+            Consultar el Id.Usuario registrado para un email.
+            </summary>
+            <param name="Email">Email del usuario</param>
+        </member>
+        <member name="M:CedServiciosApi.Controllers.UsuarioController.Lista(CedServicios.Entidades.Request.UsuarioListaRequest)">
+            <summary>
+            Consultar una lista de usuarios.
+            </summary>
+            <param name="UsuarioListaRequest">json de entidad UsuarioListaRequest</param> 
+        </member>
+        <member name="M:CedServiciosApi.Controllers.UsuarioController.ConsultarPreguntaDeSeguridad(System.String,System.String)">
+            <summary>
+            Consultar el Id.Usuario registrado para un email.
+            </summary>
+            <param name="Id">Identificacion del usuario (nick)</param>
+            <param name="Email">Email del usuario</param> 
+        </member>
+        <member name="M:CedServiciosApi.Controllers.UsuarioController.CambiarClaveConPreguntaSeg(CedServicios.Entidades.Request.UsuarioCambiarClaveConPreguntaSegRequest)">
+            <summary>
+            Cambiar la clave con la pregunta de seguridad (por olvido de clave).
+            </summary>
+        </member>
+        <member name="M:CedServiciosApi.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+             <summary>
+            
+             </summary>
+             <param name="services"></param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "IRANVdCBukaVWEhljUTXutvvQGS3X9jx2YaXBe5OQmhqteg/eiAvEKPnsSpyQdmNRQ4b6OYRaTUjxhAcmh+pmg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\chris\\OneDrive\\Desktop\\CederiaProyecto\\Back\\CedServiciosApi-master\\FeaEntidades\\FeaEntidades.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\chris\\.nuget\\packages\\filehelpers\\3.4.1\\filehelpers.3.4.1.nupkg.sha512",
+    "C:\\Users\\chris\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\chris\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

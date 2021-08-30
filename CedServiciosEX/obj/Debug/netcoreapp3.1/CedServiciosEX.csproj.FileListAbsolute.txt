@@ -1,0 +1,9 @@
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\CedServiciosEX\bin\Debug\netcoreapp3.1\CedServiciosEX.deps.json
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\CedServiciosEX\bin\Debug\netcoreapp3.1\CedServiciosEX.dll
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\CedServiciosEX\bin\Debug\netcoreapp3.1\CedServiciosEX.pdb
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\CedServiciosEX\obj\Debug\netcoreapp3.1\CedServiciosEX.csproj.AssemblyReference.cache
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\CedServiciosEX\obj\Debug\netcoreapp3.1\CedServiciosEX.AssemblyInfoInputs.cache
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\CedServiciosEX\obj\Debug\netcoreapp3.1\CedServiciosEX.AssemblyInfo.cs
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\CedServiciosEX\obj\Debug\netcoreapp3.1\CedServiciosEX.csproj.CoreCompileInputs.cache
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\CedServiciosEX\obj\Debug\netcoreapp3.1\CedServiciosEX.dll
+C:\Users\chris\OneDrive\Desktop\CederiaProyecto\Back\CedServiciosApi-master\CedServiciosEX\obj\Debug\netcoreapp3.1\CedServiciosEX.pdb

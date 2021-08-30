@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CedServicioDB\CedServiciosDB.csproj" />
+    <ProjectReference Include="..\CedServiciosEntidades\CedServiciosEntidades.csproj" />
+    <ProjectReference Include="..\CedServiciosEX\CedServiciosEX.csproj" />
+    <ProjectReference Include="..\FeaEntidades\FeaEntidades.csproj" />
+  </ItemGroup>
+
+</Project>
