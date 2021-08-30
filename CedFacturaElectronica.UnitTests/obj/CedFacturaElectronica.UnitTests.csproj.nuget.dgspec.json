@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\chris\\OneDrive\\Desktop\\CedeiraFacturaElectronica\\CedFacturaElectronica.Api\\CedFacturaElectronica.UnitTests\\CedFacturaElectronica.UnitTests.csproj": {}
+    "C:\\GitHub\\CedServiciosApi\\CedFacturaElectronica.UnitTests\\CedFacturaElectronica.UnitTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\chris\\OneDrive\\Desktop\\CedeiraFacturaElectronica\\CedFacturaElectronica.Api\\CedFacturaElectronica.UnitTests\\CedFacturaElectronica.UnitTests.csproj": {
+    "C:\\GitHub\\CedServiciosApi\\CedFacturaElectronica.UnitTests\\CedFacturaElectronica.UnitTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\chris\\OneDrive\\Desktop\\CedeiraFacturaElectronica\\CedFacturaElectronica.Api\\CedFacturaElectronica.UnitTests\\CedFacturaElectronica.UnitTests.csproj",
+        "projectUniqueName": "C:\\GitHub\\CedServiciosApi\\CedFacturaElectronica.UnitTests\\CedFacturaElectronica.UnitTests.csproj",
         "projectName": "CedFacturaElectronica.UnitTests",
-        "projectPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CedeiraFacturaElectronica\\CedFacturaElectronica.Api\\CedFacturaElectronica.UnitTests\\CedFacturaElectronica.UnitTests.csproj",
+        "projectPath": "C:\\GitHub\\CedServiciosApi\\CedFacturaElectronica.UnitTests\\CedFacturaElectronica.UnitTests.csproj",
         "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CedeiraFacturaElectronica\\CedFacturaElectronica.Api\\CedFacturaElectronica.UnitTests\\obj\\",
+        "outputPath": "C:\\GitHub\\CedServiciosApi\\CedFacturaElectronica.UnitTests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",

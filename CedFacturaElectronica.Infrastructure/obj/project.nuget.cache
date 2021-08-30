@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6VrKiDhtKBLqA/nmZo05ItfZMrVIOEoKzKiuGDcZ1dsf/g7/M4VPzEnYXlzdfC9RuXJ78C2hskW853Qu5YC+HA==",
+  "dgSpecHash": "aLYoQ+jP6ByzZebpJdokflrX/akpiQaNMhRcPDQhPSPmQWi6d/M/tTNQ182Ku7JLynpJgo6riwYOQSUW0HTv3Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\chris\\OneDrive\\Desktop\\CedeiraFacturaElectronica\\CedFacturaElectronica.Api\\CedFacturaElectronica.Infrastructure\\CedFacturaElectronica.Infrastructure.csproj",
+  "projectFilePath": "C:\\GitHub\\CedServiciosApi\\CedFacturaElectronica.Infrastructure\\CedFacturaElectronica.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\chris\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\chris\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.9\\microsoft.aspnetcore.cryptography.internal.5.0.9.nupkg.sha512",

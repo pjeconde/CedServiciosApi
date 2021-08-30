@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\chris\\OneDrive\\Desktop\\CedeiraFacturaElectronica\\CedFacturaElectronica.Api\\CedFacturaElectronica.IntegrationTests\\CedFacturaElectronica.IntegrationTests.csproj": {}
+    "C:\\GitHub\\CedServiciosApi\\CedFacturaElectronica.IntegrationTests\\CedFacturaElectronica.IntegrationTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\chris\\OneDrive\\Desktop\\CedeiraFacturaElectronica\\CedFacturaElectronica.Api\\CedFacturaElectronica.IntegrationTests\\CedFacturaElectronica.IntegrationTests.csproj": {
+    "C:\\GitHub\\CedServiciosApi\\CedFacturaElectronica.IntegrationTests\\CedFacturaElectronica.IntegrationTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\chris\\OneDrive\\Desktop\\CedeiraFacturaElectronica\\CedFacturaElectronica.Api\\CedFacturaElectronica.IntegrationTests\\CedFacturaElectronica.IntegrationTests.csproj",
+        "projectUniqueName": "C:\\GitHub\\CedServiciosApi\\CedFacturaElectronica.IntegrationTests\\CedFacturaElectronica.IntegrationTests.csproj",
         "projectName": "CedFacturaElectronica.IntegrationTests",
-        "projectPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CedeiraFacturaElectronica\\CedFacturaElectronica.Api\\CedFacturaElectronica.IntegrationTests\\CedFacturaElectronica.IntegrationTests.csproj",
+        "projectPath": "C:\\GitHub\\CedServiciosApi\\CedFacturaElectronica.IntegrationTests\\CedFacturaElectronica.IntegrationTests.csproj",
         "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CedeiraFacturaElectronica\\CedFacturaElectronica.Api\\CedFacturaElectronica.IntegrationTests\\obj\\",
+        "outputPath": "C:\\GitHub\\CedServiciosApi\\CedFacturaElectronica.IntegrationTests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",

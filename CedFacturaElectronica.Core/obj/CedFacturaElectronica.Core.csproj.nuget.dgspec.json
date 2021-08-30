@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\chris\\OneDrive\\Desktop\\CedeiraFacturaElectronica\\CedFacturaElectronica.Api\\CedFacturaElectronica.Core\\CedFacturaElectronica.Core.csproj": {}
+    "C:\\GitHub\\CedServiciosApi\\CedFacturaElectronica.Core\\CedFacturaElectronica.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\chris\\OneDrive\\Desktop\\CedeiraFacturaElectronica\\CedFacturaElectronica.Api\\CedFacturaElectronica.Core\\CedFacturaElectronica.Core.csproj": {
+    "C:\\GitHub\\CedServiciosApi\\CedFacturaElectronica.Core\\CedFacturaElectronica.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\chris\\OneDrive\\Desktop\\CedeiraFacturaElectronica\\CedFacturaElectronica.Api\\CedFacturaElectronica.Core\\CedFacturaElectronica.Core.csproj",
+        "projectUniqueName": "C:\\GitHub\\CedServiciosApi\\CedFacturaElectronica.Core\\CedFacturaElectronica.Core.csproj",
         "projectName": "CedFacturaElectronica.Core",
-        "projectPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CedeiraFacturaElectronica\\CedFacturaElectronica.Api\\CedFacturaElectronica.Core\\CedFacturaElectronica.Core.csproj",
+        "projectPath": "C:\\GitHub\\CedServiciosApi\\CedFacturaElectronica.Core\\CedFacturaElectronica.Core.csproj",
         "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\chris\\OneDrive\\Desktop\\CedeiraFacturaElectronica\\CedFacturaElectronica.Api\\CedFacturaElectronica.Core\\obj\\",
+        "outputPath": "C:\\GitHub\\CedServiciosApi\\CedFacturaElectronica.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",

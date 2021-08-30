@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sFdG5ACYbpgcA5ilZWhDrNubIbgPdZyhho146ac0X/jWAdP8KlWMmgtQA5s6aauM6q35USvrIz5PaFAvT7AKYg==",
+  "dgSpecHash": "7LiLKKihmZOqzZIvkX6eJMirHWj0TA5Ftj5uTGz2xJieQRzRVGuq875agRyaBGKgvle69ZTBuaCHtXmrVs2AfQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\chris\\OneDrive\\Desktop\\CedeiraFacturaElectronica\\CedFacturaElectronica.Api\\CedFacturaElectronica.Api\\CedFacturaElectronica.Api.csproj",
+  "projectFilePath": "C:\\GitHub\\CedServiciosApi\\CedFacturaElectronica.Api\\CedFacturaElectronica.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\chris\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\chris\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.9\\microsoft.aspnetcore.authentication.jwtbearer.5.0.9.nupkg.sha512",
