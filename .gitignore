@@ -350,10 +350,11 @@ MigrationBackup/
 .ionide/
 /CedFacturaElectronica.Api/bin
 /CedFacturaElectronica.Api/obj
+/CedFacturaElectronica.Api/CedFacturaElectronica.Api.csproj
 /CedFacturaElectronica.Core/bin
 /CedFacturaElectronica.Core/obj
 /CedFacturaElectronica.Infrastructure/obj
 /CedFacturaElectronica.Infrastructure/bin
 /CedFacturaElectronica.IntegrationTests/obj
 /CedFacturaElectronica.UnitTests/obj
-/.vs/CedFacturaElectronica.Api/v16
+/.vs
