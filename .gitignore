@@ -357,3 +357,4 @@ MigrationBackup/
 /CedFacturaElectronica.IntegrationTests/obj
 /CedFacturaElectronica.UnitTests/obj
 /.vs/CedFacturaElectronica.Api/v16
+/.vs
