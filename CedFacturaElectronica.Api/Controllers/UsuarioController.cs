@@ -21,13 +21,13 @@ namespace CedFacturaElectronica.Api.Controllers
         private readonly IConfiguration _configuration;
         private readonly SignInManager<UsuarioAplicacion> _signInManager;
         private readonly UserManager<UsuarioAplicacion> _userManager;
-        private readonly IUsuarioRepositorio _usuarioRepositorio;
+        private readonly IUsuarioService _usuarioService;
 
-        public UsuarioController(IUsuarioRepositorio usuarioRepositorio, UserManager<UsuarioAplicacion> userManager,
+        public UsuarioController(IUsuarioService usuarioService, UserManager<UsuarioAplicacion> userManager,
         SignInManager<UsuarioAplicacion> signInManager,
         IConfiguration configuration)
         {
-            _usuarioRepositorio = usuarioRepositorio;
+            _usuarioService = usuarioService;
             _userManager = userManager;
             _signInManager = signInManager;
             _configuration = configuration;
@@ -60,7 +60,7 @@ namespace CedFacturaElectronica.Api.Controllers
                 usuarioTokenDTO = CrearToken(model, new List<string>());
                 UsuarioInfoDTO usuarioInfoDTO = new UsuarioInfoDTO();
                 usuarioInfoDTO.NombreCompleto = model.Nombre + " " + model.Apellido;
-                usuarioInfoDTO.NombreCuenta = model.Email;
+                usuarioInfoDTO.NombreCuenta = model.UserName;
 
                 UsuarioLogin usuarioLogin = new UsuarioLogin();
                 usuarioLogin.UsuarioTokenDTO = usuarioTokenDTO;
@@ -77,20 +77,20 @@ namespace CedFacturaElectronica.Api.Controllers
         [HttpDelete("{id}")]
         public ActionResult<UsuarioAplicacion> Delete(int id)
         {
-            _usuarioRepositorio.DeleteAsync(id);
+            _usuarioService.DeleteAsync(id);
             return Ok();
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UsuarioAplicacion>>> Get()
         {
-            return await _usuarioRepositorio.GetAllAsync();
+            return await _usuarioService.GetAllAsync();
         }
 
         [HttpGet("{id}", Name = "ObtenerUsuario")]
         public async Task<ActionResult<UsuarioAplicacion>> Get(int id)
         {
-            var resultado = await _usuarioRepositorio.GetByIdAsync(id);
+            var resultado = await _usuarioService.GetByIdAsync(id);
 
             if (resultado == null)
             {
@@ -103,7 +103,7 @@ namespace CedFacturaElectronica.Api.Controllers
         [HttpGet("{nombreCuenta},{clave}")]
         public async Task<ActionResult<UsuarioAplicacion>> Get(string nombreCuenta, string clave)
         {
-            var resultado = await _usuarioRepositorio.GetByAccountAsync(nombreCuenta, clave);
+            var resultado = await _usuarioService.GetLoginByCredentials(nombreCuenta, clave);
 
             if (resultado == null)
             {
@@ -117,13 +117,14 @@ namespace CedFacturaElectronica.Api.Controllers
         public async Task<ActionResult<UsuarioLogin>> Ingresar([FromBody]
         UsuarioAplicacion userInfo)
         {
-                    var result = await
+             var result = await
            _signInManager.PasswordSignInAsync(userInfo.UserName, userInfo.Clave,
            isPersistent: false, lockoutOnFailure: false);
             if (result.Succeeded)
             {
                 
                 var usuario = await _userManager.FindByNameAsync(userInfo.UserName);
+
 
                 UsuarioTokenDTO usuarioTokenDTO = new UsuarioTokenDTO();
                 usuarioTokenDTO = CrearToken(usuario, new List<string>());
@@ -144,10 +145,38 @@ namespace CedFacturaElectronica.Api.Controllers
             }
         }
 
+        [HttpPost("RecuperarClave")]
+        public async Task<ActionResult<UsuarioLogin>> RecuperarClave([FromBody]
+        UsuarioInfoDTO userInfo)
+        {
+                var usuario = await _userManager.FindByNameAsync(userInfo.NombreCuenta);
+            if(usuario!=null)
+            {
+                if (usuario.Email == userInfo.Email)
+                {
+                    if (usuario.UserName == userInfo.NombreCuenta)
+                    {
+                        return Ok(usuario);
+                    }
+
+                }
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Usuario no encontrado");
+            }
+            
+            
+            ModelState.AddModelError(string.Empty, "Mail no encontrado");
+
+            return BadRequest(ModelState);
+
+        }
+
         [HttpPost]
         public async Task<ActionResult> Post(UsuarioAplicacion usuario)
         {
-            await _usuarioRepositorio.CreateAsync(usuario);
+            await _usuarioService.CreateAsync(usuario);
             return new CreatedAtRouteResult("ObtenerUsuario", new { id = usuario.Id }, usuario);
         }
 
@@ -160,7 +189,7 @@ namespace CedFacturaElectronica.Api.Controllers
                 return BadRequest();
             }
 
-            await _usuarioRepositorio.UpdateAsync(value);
+            await _usuarioService.UpdateAsync(value);
             return Ok();
         }
 

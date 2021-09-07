@@ -1,6 +1,7 @@
 using CedFacturaElectronica.Core.Entidades;
 using CedFacturaElectronica.Core.Entidades.Errores_Personalizados;
 using CedFacturaElectronica.Core.Interfaces;
+using CedFacturaElectronica.Core.Servicios;
 using CedFacturaElectronica.Infrastructure.Data;
 using CedFacturaElectronica.Infrastructure.Repositorios;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -66,6 +67,7 @@ namespace CedFacturaElectronica.Api
             services.AddControllers();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
 
+            services.AddTransient<IUsuarioService, UsuarioService>();
             services.AddTransient<IUsuarioRepositorio, UsuarioRepositorio>();
             services.AddTransient<IPersonaRepositorio, PersonaRepositorio>();
 

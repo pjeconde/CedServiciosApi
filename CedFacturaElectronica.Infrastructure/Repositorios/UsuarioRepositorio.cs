@@ -2,10 +2,8 @@
 using CedFacturaElectronica.Core.Interfaces;
 using CedFacturaElectronica.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CedFacturaElectronica.Infrastructure.Repositorios
@@ -18,12 +16,14 @@ namespace CedFacturaElectronica.Infrastructure.Repositorios
         {
             _applicationDbContext = applicationDbContext;
         }
-        public async Task<UsuarioAplicacion> CreateAsync(UsuarioAplicacion usuario)
+        public async Task CreateAsync(UsuarioAplicacion usuario)
         {
-            await _applicationDbContext.Usuarios.AddAsync(usuario);
+
+            // await _applicationDbContext.Usuarios.AddAsync(usuario);
+            _applicationDbContext.Usuarios.Add(usuario);
             await _applicationDbContext.SaveChangesAsync();
 
-            return usuario;
+            // return usuario;
 
         }
 
@@ -50,7 +50,7 @@ namespace CedFacturaElectronica.Infrastructure.Repositorios
 
         }
 
-        public async Task<UsuarioAplicacion> GetByAccountAsync(string nombreUsuario, string clave)
+        public async Task<UsuarioAplicacion> GetLoginByCredentials(string nombreUsuario, string clave)
         {
             return await _applicationDbContext.Usuarios
 
